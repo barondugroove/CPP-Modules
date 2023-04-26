@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:19:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/23 17:25:14 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:42:40 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ Contact::Contact(void) {
 
 Contact::~Contact(void) {
 	return ;
+}
+
+int Contact::getIndex(void) const {
+	return this->_index;
 }
 
 std::string Contact::getFirstName(void) const {

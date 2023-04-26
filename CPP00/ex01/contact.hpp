@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:11:00 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/23 20:07:06 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:43:48 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Contact {
 		void setPhoneNumber(std::string phoneNumber);
 		std::string getDarkestSecret(void) const;
 		void setDarkestSecret(std::string darkestSecret);
+		int getIndex(void) const;
 
 	private :
 		int	_index;
