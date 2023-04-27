@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:10:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/26 16:43:57 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/04/27 19:16:54 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iomanip>
 
 Phonebook::Phonebook(void) {
+	_index = -1;
 	return ;
 }
 
@@ -32,19 +33,14 @@ void Phonebook::printStart(void) const {
 	std::cout << "╚═════╝  ╚═════╝ ╚═╝   ╚═╝      ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝ ╚═════╝" << std::endl;
 	std::cout << "                     L'ANNUAIRE DE RECHERCHE                        " << std::endl;
 	std::cout << std::endl;
-	std::cout << "Utiliser les commandes ci-dessous pour manipuler l'annuaire :" << std::endl;
-	std::cout << "	ADD : permet d'ajouter un contact." << std::endl;
-	std::cout << "	SEARCH : permet d'afficher un contact précis." << std::endl;
-	std::cout << "	EXIT : quitte l'annuaire." << std::endl;
-	std::cout << std::endl;
 }
 
 void Phonebook::printHelp(void) const {
 	std::cout << std::endl;
-	std::cout << "Utiliser les commandes ci-dessous pour manipuler l'annuaire :" << std::endl;
-	std::cout << "	ADD : permet d'ajouter un contact." << std::endl;
-	std::cout << "	SEARCH : permet d'afficher un contact précis." << std::endl;
-	std::cout << "	EXIT : quitte l'annuaire." << std::endl;
+	std::cout << "Use the commands below to manipulate the phonebook :" << std::endl;
+	std::cout << "	ADD: allows you to add a contact." << std::endl;
+	std::cout << "	SEARCH: display the contact list in addition to a specific contact." << std::endl;
+	std::cout << "	EXIT: exit the phonebook." << std::endl;
 	std::cout << std::endl;
 }
 
@@ -56,24 +52,34 @@ void Phonebook::displayContact(void) const {
 	std::cout << std::endl;
 }
 
+void Phonebook::setIndex(void) {
+	_index++;
+	if (_index > 7)
+		_index = 0;
+	if (!contacts[_index].getFirstName().empty())
+		contacts[_index].eraseContact(_index);
+}
+
 void Phonebook::addContact(void) {
 	std::string input;
 
-	std::cout << "Please enter contact first name : ";
-	std::getline(std::cin, input);
-	this->contacts[0].setFirstName(input);
-	std::cout << "Please enter contact last name : ";
-	std::getline(std::cin, input);
-	this->contacts[0].setLastName(input);
-	std::cout << "Please enter contact nick name : ";
-	std::getline(std::cin, input);
-	this->contacts[0].setNickName(input);
-	std::cout << "Please enter contact phone number : ";
-	std::getline(std::cin, input);
-	this->contacts[0].setPhoneNumber(input);
-	std::cout << "Please enter contact darkest secret : ";
-	std::getline(std::cin, input);
-	this->contacts[0].setDarkestSecret(input);
+	setIndex();
+	this->contacts[_index].setFirstName(input);
+	this->contacts[_index].setLastName(input);
+	this->contacts[_index].setNickname(input);
+	this->contacts[_index].setPhoneNumber(input);
+	this->contacts[_index].setDarkestSecret(input);
+}
+
+void	print_var(std::string str) {
+	std::cout << std::setw(10);
+	if (str.length() < 10)
+		std::cout << str << " |";
+	else
+	{
+		std::cout << str.erase(9, str.length());
+		std::cout << "." << "|";
+	}
 }
 
 void Phonebook::searchContact(void) const {
@@ -84,18 +90,11 @@ void Phonebook::searchContact(void) const {
 	{
 		std::cout << "| ";
 		std::cout << std::setw(10);
-		std::cout << contacts[i].getIndex() << "|";
-		std::cout << std::setw(10);
-		if (contacts[i].getFirstName().length() < 10)
-			std::cout << contacts[i].getFirstName() << " |";
-		else
-		{
-			std::cout << contacts[i].getFirstName().erase(9, contacts[i].getFirstName().length());
-			std::cout << "." << "|";
-		}
-		std::cout << std::setw(10);
-		std::cout << contacts[i].getLastName() << "|";
-		std::cout << std::setw(10);
-		std::cout << contacts[i].getNickName() << "|" << std::endl;
+		std::cout << std::to_string(_index);
+		std::cout << "|";
+		print_var(contacts[i].getFirstName());
+		print_var(contacts[i].getLastName());
+		print_var(contacts[i].getNickname());
+		std::cout << std::endl;
 	}
 }

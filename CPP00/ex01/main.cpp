@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:11:14 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/26 15:00:28 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/04/27 17:04:03 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 bool valid_command(std::string command)
 {
 	if (!command.compare("ADD") || !command.compare("HELP")
-		|| !command.compare("SEARCH") || !command.compare("EXIT"))
+		|| !command.compare("SEARCH") || !command.compare("EXIT") || command.empty())
 		return (true);
 	return (false);
 }
@@ -31,10 +31,10 @@ int	main(void)
 	minitel.printStart();
 	while (std::cin)
 	{
-		std::cout << "Entrez une commande : ";
+		std::cout << "Type a command : ";
 		std::getline(std::cin, input);
 		if (!valid_command(input))
-			std::cout << "Cette commande n'existe pas. Tapez HELP pour voir les commandes existantes." << std::endl;
+			std::cout << "Command " << input << " does not exist. Type HELP to see useful commands." << std::endl;
 		else if (input == "ADD")
 			minitel.addContact();
 		else if (input == "SEARCH")
