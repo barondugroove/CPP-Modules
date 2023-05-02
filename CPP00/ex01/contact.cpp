@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:19:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 15:30:37 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 16:46:16 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Contact::~Contact(void) {
 }
 
 void Contact::eraseContact(int index) {
-	std::cout << "Phonebook is full, adding a new entry will delete contact n° " << index << "." << std::endl;
+	std::cout << "Phonebook is full, adding a new entry will delete contact n° " << index + 1 << "." << std::endl;
 	this->_firstName.clear();
 	this->_lastName.clear();
 	this->_nickname.clear();

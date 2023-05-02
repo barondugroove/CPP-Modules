@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:10:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 15:59:55 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 18:18:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Phonebook::displayTab(void) const {
 	std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
 }
 
-void	print_var(std::string str) {
+void	Phonebook::printVar(std::string str) const {
 	if (str.length() < 10)
 	{
 		std::cout << std::setw(10);
@@ -92,9 +92,9 @@ void	Phonebook::printContact(int start, int end) const {
 		std::cout << std::setw(10);
 		std::cout << i + 1;
 		std::cout << "|";
-		print_var(contacts[i].getFirstName());
-		print_var(contacts[i].getLastName());
-		print_var(contacts[i].getNickname());
+		printVar(contacts[i].getFirstName());
+		printVar(contacts[i].getLastName());
+		printVar(contacts[i].getNickname());
 		std::cout << std::endl;
 	}
 }
@@ -129,7 +129,7 @@ void Phonebook::searchContact(void) const {
 	std::string input;
 
 	displayTab();
-	printContact(0, 7);
+	printContact(0, 8);
 	std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
 	displayContact();
 }

@@ -6,9 +6,12 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:15:08 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/22 15:33:20 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 16:31:31 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <string>
+#include <iostream>
 
 void	megaphone(std::string str)
 {
@@ -24,7 +27,7 @@ int	main(int ac, char **av)
 
 	i = 1;
 	if (ac < 2)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	else
 	{
 		while (av[i])

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:11:00 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 14:46:36 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 16:32:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ class Contact {
 		void	eraseContact(int index);
 
 	private :
-		int	_index;
 		std::string _firstName;
 		std::string _lastName;
 		std::string _nickname;
