@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:10:41 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 16:49:26 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 18:46:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class Phonebook {
 
 	public :
-		Phonebook (void);
-		~Phonebook (void);
+		Phonebook(void);
+		~Phonebook(void);
 
 		void	addContact(void);
 		void	searchContact(void) const;
