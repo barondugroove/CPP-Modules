@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:19:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/27 18:15:23 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 15:30:37 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ std::string Contact::getFirstName(void) const {
 }
 
 void Contact::setFirstName(std::string firstName) {
-
 	while (firstName.empty() && std::cin)
 	{
 		std::cout << "Please enter contact first name : ";
@@ -53,7 +52,6 @@ std::string Contact::getLastName(void) const {
 }
 
 void Contact::setLastName(std::string lastName) {
-
 	while (lastName.empty() && std::cin)
 	{
 		std::cout << "Please enter contact last name : ";
@@ -70,7 +68,6 @@ std::string Contact::getNickname(void) const {
 }
 
 void Contact::setNickname(std::string nickname) {
-
 	while (nickname.empty() && std::cin)
 	{
 		std::cout << "Please enter contact nickname : ";
@@ -87,7 +84,6 @@ std::string Contact::getPhoneNumber(void) const {
 }
 
 void Contact::setPhoneNumber(std::string phoneNumber) {
-
 	while (phoneNumber.empty() && std::cin)
 	{
 		std::cout << "Please enter contact phone number : ";

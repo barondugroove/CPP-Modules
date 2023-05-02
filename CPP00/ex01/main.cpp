@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:11:14 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/27 17:04:03 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 14:43:15 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@ bool valid_command(std::string command)
 	return (false);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	Phonebook minitel;
 	std::string input;
 
+	(void)av;
+	if (ac != 1)
+	{
+		std::cout << "No argument required, try again.";
+		return (1);
+	}
 	minitel.printStart();
 	while (std::cin)
 	{

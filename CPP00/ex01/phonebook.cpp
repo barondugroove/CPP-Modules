@@ -6,13 +6,15 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:10:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/04/27 19:16:54 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/02 15:59:55 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
+
 
 Phonebook::Phonebook(void) {
 	_index = -1;
@@ -44,12 +46,24 @@ void Phonebook::printHelp(void) const {
 	std::cout << std::endl;
 }
 
-void Phonebook::displayContact(void) const {
-	std::cout << "__________________________________________________" << std::endl;
-	std::cout << "|           |            |            |           |" << std::endl;
-	std::cout << "|   INDEX   | FIRST NAME | LAST NAME  |  NICKNAME |" << std::endl;
-	std::cout << "|___________|____________|___________ |___________|" << std::endl;
-	std::cout << std::endl;
+void Phonebook::displayTab(void) const {
+	std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
+	std::cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |" << std::endl;
+	std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
+}
+
+void	print_var(std::string str) {
+	if (str.length() < 10)
+	{
+		std::cout << std::setw(10);
+		std::cout << str << "|";
+	}
+	else
+	{
+		std::cout << std::setw(9);
+		std::cout << str.erase(9, str.length());
+		std::cout << "." << "|";
+	}
 }
 
 void Phonebook::setIndex(void) {
@@ -71,30 +85,51 @@ void Phonebook::addContact(void) {
 	this->contacts[_index].setDarkestSecret(input);
 }
 
-void	print_var(std::string str) {
-	std::cout << std::setw(10);
-	if (str.length() < 10)
-		std::cout << str << " |";
-	else
+void	Phonebook::printContact(int start, int end) const {
+	for (int i = start; i < end; i++)
 	{
-		std::cout << str.erase(9, str.length());
-		std::cout << "." << "|";
-	}
-}
-
-void Phonebook::searchContact(void) const {
-	std::string input;
-
-	displayContact();
-	for (int i = 0; i < 8; i++)
-	{
-		std::cout << "| ";
+		std::cout << "|";
 		std::cout << std::setw(10);
-		std::cout << std::to_string(_index);
+		std::cout << i + 1;
 		std::cout << "|";
 		print_var(contacts[i].getFirstName());
 		print_var(contacts[i].getLastName());
 		print_var(contacts[i].getNickname());
 		std::cout << std::endl;
 	}
+}
+
+void Phonebook::displayContact(void) const {
+	std::string input;
+	int	index;
+
+	while (std::cin)
+	{
+		std::cout << "Enter the index of the contact you want to display : ";
+		std::getline(std::cin, input);
+		index = atoi(input.c_str());
+		if ((input.empty() || index > 8 || index < 1))
+			std::cout << "Wrong index, please provide a number betweem 1 and 8." << std::endl;
+		else if (contacts[index - 1].getFirstName().empty())
+		{
+			std::cout << "Contact n°" << index << " is empty." << std::endl;
+			break ;
+		}
+		else
+		{
+			std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
+			printContact(index - 1, index);
+			std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
+			break ;
+		}
+	}
+}
+
+void Phonebook::searchContact(void) const {
+	std::string input;
+
+	displayTab();
+	printContact(0, 7);
+	std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
+	displayContact();
 }
