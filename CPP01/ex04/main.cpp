@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 18:39:35 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/03 16:00:05 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/02 18:38:22 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/03 17:11:22 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	HumanA_HPP
-# define HumanA_HPP
-#include "Weapon.hpp"
+#include <fstream>
+#include <iostream>
 #include <string>
 
-class HumanA {
-	public :
-		HumanA(std::string name, Weapon& weaponType);
-		~HumanA(void);
+void	search_replace(char **args)
+{
+	std::string buffer;
 
-		void attack(void);
+	std::ifstream file(args[0], std::ifstream::binary);
+	if (file)
+	{
+		std::cout << "LOl" << std::endl;
+	}
+}
 
-	private :
-		std::string _name;
-		Weapon&	_weapon;
-};
-
-#endif
+int main(int ac, char **av)
+{
+	if (ac == 4)
+		search_replace(av + 1);
+	return (0);
+}
