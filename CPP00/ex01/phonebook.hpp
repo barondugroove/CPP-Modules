@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:10:41 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 18:46:34 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/04 16:16:01 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ class Phonebook {
 		void	addContact(void);
 		void	searchContact(void) const;
 		void	displayContact(void) const;
-		void	printContact(int start, int end) const;
+		void	printContact(int index) const;
+		void	printPhonebook(void) const;
 		void	printVar(std::string str) const;
 		void	displayTab(void) const;
 		void	setIndex(void);

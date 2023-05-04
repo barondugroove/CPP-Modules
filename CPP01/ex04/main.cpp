@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:38:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/03 17:11:22 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/04 15:48:45 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,29 @@
 #include <iostream>
 #include <string>
 
-void	search_replace(char **args)
+std::string replace(std::string buffer, std::string search, std::string replace)
+{
+
+}
+
+void	copyFile(char **args)
 {
 	std::string buffer;
+	std::ifstream file;
 
-	std::ifstream file(args[0], std::ifstream::binary);
-	if (file)
+	file.open(args[0]);
+	if (file.is_open())
 	{
-		std::cout << "LOl" << std::endl;
+		file >> buffer;
+		std::cout << buffer;
 	}
+	file.close();
+	buffer = replace(buffer, args[1], args[2]);
 }
 
 int main(int ac, char **av)
 {
 	if (ac == 4)
-		search_replace(av + 1);
+		copyFile(av + 1);
 	return (0);
 }

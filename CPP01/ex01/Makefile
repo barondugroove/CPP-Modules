@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 16:20:40 by rlaforge          #+#    #+#              #
-#    Updated: 2023/05/02 21:47:30 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/04 16:35:07 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS =	main.cpp \
 		Zombie.cpp \
 		zombieHorde.cpp \
 
-CC = @c++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
@@ -25,21 +25,17 @@ OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.c
-	@echo "\e[1A\e[2K\e[1mCompiling $<\033[0m"
-	$(CC) $(CFLAGS) -cpp $< -o $@
+%.o : %.cpp
+	$(CC) $(CFLAGS) $< -c -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
-	@echo "\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1A\e[2K\e[1;32m📦 $(NAME) compiled!\033[0m"
+	$(CC) $(OBJS) -o $(NAME)
 
 clean :
-	@rm -f $(OBJS)
-	@echo "\033[91m🧹 Binary files cleaned!\033[0m"
+	rm -f $(OBJS)
 
 fclean : clean
-	@rm -rf $(NAME)
-	@echo "\e[1A\e[2K\e[91m🧹 Binary files and executable cleaned!\033[0m"
+	rm -rf $(NAME)
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:10:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 18:35:16 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/04 16:27:22 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void Phonebook::addContact(void) {
 	this->contacts[_index].setDarkestSecret(input);
 }
 
-void	Phonebook::printContact(int start, int end) const {
-	for (int i = start; i < end; i++)
+void	Phonebook::printPhonebook(void) const {
+	for (int i = 0; i < 8; i++)
 	{
 		std::cout << "|";
 		std::cout << std::setw(10);
@@ -97,6 +97,18 @@ void	Phonebook::printContact(int start, int end) const {
 		printVar(contacts[i].getNickname());
 		std::cout << std::endl;
 	}
+}
+
+
+void	Phonebook::printContact(int index) const {
+	std::cout << std::endl;
+	std::cout << "Contact n°" << index + 1 << std::endl;
+	std::cout << "First name : " << contacts[index].getFirstName() << std::endl;
+	std::cout << "Last name : " << contacts[index].getLastName() << std::endl;
+	std::cout << "Nickname : " << contacts[index].getNickname() << std::endl;
+	std::cout << "Phone Number : " << contacts[index].getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret : " << contacts[index].getDarkestSecret() << std::endl;
+	std::cout << std::endl;
 }
 
 void Phonebook::displayContact(void) const {
@@ -117,9 +129,7 @@ void Phonebook::displayContact(void) const {
 		}
 		else
 		{
-			std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
-			printContact(index - 1, index);
-			std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
+			printContact(index - 1);
 			break ;
 		}
 	}
@@ -129,7 +139,7 @@ void Phonebook::searchContact(void) const {
 	std::string input;
 
 	displayTab();
-	printContact(0, 8);
+	printPhonebook();
 	std::cout << "└──────────┴──────────┴──────────┴──────────┘" << std::endl;
 	displayContact();
 }
