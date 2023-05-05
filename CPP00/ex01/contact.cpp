@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:19:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 18:51:37 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/05 14:30:12 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void Contact::setFirstName(std::string firstName) {
 		std::cout << "Please enter contact first name : ";
 		std::getline(std::cin, firstName);
 		if (firstName.empty() && std::cin)
-			std::cout << "This field can't be empty, please provide a correct name." << std::endl;
+			std::cerr << "This field can't be empty, please provide a correct name." << std::endl;
 		else
 			_firstName = firstName;
 	}
@@ -57,7 +57,7 @@ void Contact::setLastName(std::string lastName) {
 		std::cout << "Please enter contact last name : ";
 		std::getline(std::cin, lastName);
 		if (lastName.empty() && std::cin)
-			std::cout << "This field can't be empty, please provide a correct name." << std::endl;
+			std::cerr << "This field can't be empty, please provide a correct name." << std::endl;
 		else
 			_lastName = lastName;
 	}
@@ -73,7 +73,7 @@ void Contact::setNickname(std::string nickname) {
 		std::cout << "Please enter contact nickname : ";
 		std::getline(std::cin, nickname);
 		if (nickname.empty() && std::cin)
-			std::cout << "This field can't be empty, please provide a correct entry." << std::endl;
+			std::cerr << "This field can't be empty, please provide a correct entry." << std::endl;
 		else
 			_nickname = nickname;
 	}
@@ -89,7 +89,7 @@ void Contact::setPhoneNumber(std::string phoneNumber) {
 		std::cout << "Please enter contact phone number : ";
 		std::getline(std::cin, phoneNumber);
 		if (phoneNumber.empty() && std::cin)
-			std::cout << "This field can't be empty, please provide a correct number." << std::endl;
+			std::cerr << "This field can't be empty, please provide a correct number." << std::endl;
 		else
 			_phoneNumber = phoneNumber;
 	}
@@ -106,7 +106,7 @@ void Contact::setDarkestSecret(std::string darkestSecret) {
 		std::cout << "Please enter contact darkest secret : ";
 		std::getline(std::cin, darkestSecret);
 		if (darkestSecret.empty() && std::cin)
-			std::cout << "This field can't be empty, please provide a correct entry." << std::endl;
+			std::cerr << "This field can't be empty, please provide a correct entry." << std::endl;
 		else
 			_darkestSecret = darkestSecret;
 	}

@@ -6,12 +6,12 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 16:20:40 by rlaforge          #+#    #+#              #
-#    Updated: 2023/05/04 16:36:57 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/05 13:59:20 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = sedisforlosers
+NAME = sed
 
 SRCS =	main.cpp
 

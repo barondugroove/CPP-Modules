@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:11:14 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/04 16:37:17 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/05 14:30:03 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av)
 	(void)av;
 	if (ac != 1)
 	{
-		std::cout << "No argument required, try again.";
+		std::cerr << "No argument required, try again.";
 		return (1);
 	}
 	minitel.printStart();
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 		std::cout << "Type a command : ";
 		std::getline(std::cin, input);
 		if (!valid_command(input))
-			std::cout << "Command " << input << " does not exist. Type HELP to see useful commands." << std::endl;
+			std::cerr << "Command " << input << " does not exist. Type HELP to see useful commands." << std::endl;
 		else if (input == "ADD")
 			minitel.addContact();
 		else if (input == "SEARCH")

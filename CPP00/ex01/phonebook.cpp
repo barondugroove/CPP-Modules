@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:10:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/04 16:27:22 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/05 14:29:51 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,10 @@ void Phonebook::displayContact(void) const {
 		std::getline(std::cin, input);
 		index = atoi(input.c_str());
 		if ((input.empty() || index > 8 || index < 1))
-			std::cout << "Wrong index, please provide a number betweem 1 and 8." << std::endl;
+			std::cerr << "Wrong index, please provide a number betweem 1 and 8." << std::endl;
 		else if (contacts[index - 1].getFirstName().empty())
 		{
-			std::cout << "Contact n°" << index << " is empty." << std::endl;
+			std::cerr << "Contact n°" << index << " is empty." << std::endl;
 			break ;
 		}
 		else
