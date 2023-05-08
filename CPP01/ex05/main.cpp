@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 18:39:35 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/08 18:41:14 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/08 19:50:22 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 #include <iostream>
+#include <string>
 
-Zombie::Zombie(void) {
-	return ;
-}
+int main(int ac, char **av)
+{
+	Harl harl;
 
-Zombie::~Zombie(void) {
-	std::cout << "I love my family. Potato, potato, potato. " << "F for " << this->_name << std::endl;
-	return ;
-}
-
-void Zombie::announce(void) const {
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	return ;
-}
-
-void Zombie::setName(std::string name) {
-	this->_name = name;
+	if (ac != 2)
+	{
+		std::cerr << "Error. Wrong arguments number." << std::endl;
+		return (1);
+	}
+	harl.complain(av[1]);
+	return (0);
 }

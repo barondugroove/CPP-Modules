@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 18:39:35 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/08 18:41:14 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/08 18:28:24 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/08 19:50:42 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
+#include <string>
 
-Zombie::Zombie(void) {
-	return ;
-}
+class Harl {
 
-Zombie::~Zombie(void) {
-	std::cout << "I love my family. Potato, potato, potato. " << "F for " << this->_name << std::endl;
-	return ;
-}
+	public :
+		Harl(void);
+		~Harl(void);
 
-void Zombie::announce(void) const {
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-	return ;
-}
+		void complain(std::string level);
 
-void Zombie::setName(std::string name) {
-	this->_name = name;
-}
+	private :
+		void (Harl::*func[4])(void);
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+};
+
+#endif

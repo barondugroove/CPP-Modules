@@ -6,14 +6,15 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 16:20:40 by rlaforge          #+#    #+#              #
-#    Updated: 2023/05/05 15:17:37 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/08 18:40:13 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = sed
+NAME = harl2
 
-SRCS =	main.cpp
+SRCS =	main.cpp \
+		Harl.cpp
 
 CC = c++
 
