@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/09 11:31:12 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/08 18:28:24 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/09 11:55:55 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
 #include <string>
 
-int main(int ac, char **av)
-{
-	Harl harl;
+class Harl {
 
-	if (ac == 2)
-	{
-		std::cout << "Examinor tests :" << std::endl;
-		harl.complain(av[1]);
-	}
-	std::cout << "Personal tests :" << std::endl;
-	harl.complain("DEBUG");
-	harl.complain("INFO");
-	harl.complain("WARNING");
-	harl.complain("ERROR");
-	harl.complain("RANDOM");
-	return (0);
-}
+	public :
+		Harl(void);
+		~Harl(void);
+
+		void complain(int level);
+
+	private :
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+};
+
+#endif

@@ -5,12 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/09 11:40:06 by bchabot          ###   ########.fr        #
+#    Created: 2023/05/09 11:39:51 by bchabot           #+#    #+#              #
+#    Updated: 2023/05/09 11:42:05 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harl2
+
+NAME = harlFilter
 
 SRCS =	main.cpp \
 		Harl.cpp
