@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:31:35 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/09 12:01:50 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/10 15:14:05 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void Harl::warning(void) {
 
 void Harl::error(void) {
 	std::cout << "[ ERROR ]" << std::endl;
-	std::cout << "This is the most offended I’ve ever been…this is the maddest I ever will be. I’m typing so fucking hard I might break my fucking Mac book Air!!!!!!!!" << std::endl;
+	std::cout << "This is the most offended I've ever been…this is the maddest I ever will be. I'm typing so fucking hard I might break my fucking Mac book Air!!!!!!!!" << std::endl;
 }

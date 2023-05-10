@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:30:24 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/10 02:15:34 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/10 16:41:21 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int Fixed::getBits(void) const {
 
 int Fixed::toInt(void) const {
     int originalInt = fixedPoint >> this->bits;
-    return (originalInt);     
+    return (originalInt);
 }
 
 float Fixed::toFloat(void) const {
@@ -67,77 +67,104 @@ std::ostream & operator<<(std::ostream & o, Fixed const & src) {
     return o;
 }
 
-bool Fixed::operator>(Fixed const & nbr) {
-    if (this->fixedPoint > nbr.getFixedPoint())
-        return (true);
-    return (false);
+bool Fixed::operator==(Fixed const & nbr) const {
+	if (this->toFloat() == nbr.toFloat())
+		return (true);
+	return (false);
 }
 
-Fixed Fixed::operator*(Fixed const & nbr) {
-    int result = fixedPoint * nbr.fixedPoint;
-    return Fixed((int)result);
+bool Fixed::operator!=(Fixed const & nbr) const {
+	if (this->toFloat() != nbr.toFloat())
+		return (true);
+	return (false);
 }
 
-int Fixed::operator/(Fixed const & nbr) {
-    return (this->fixedPoint / nbr.fixedPoint);
+bool Fixed::operator>(Fixed const & nbr) const {
+	if (this->toFloat() > nbr.toFloat())
+		return (true);
+	return (false);
 }
 
-int Fixed::operator+(Fixed const & nbr) {
-    return (this->fixedPoint + nbr.getFixedPoint());
+bool Fixed::operator>=(Fixed const & nbr) const {
+	if (this->toFloat() >= nbr.toFloat())
+		return (true);
+	return (false);
 }
 
-int Fixed::operator-(Fixed const & nbr) {
-    return (this->fixedPoint - nbr.getFixedPoint());
+bool Fixed::operator<(Fixed const & nbr) const {
+	if (this->toFloat() < nbr.toFloat())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator<=(Fixed const & nbr) const {
+	if (this->toFloat() <= nbr.toFloat())
+		return (true);
+	return (false);
+}
+
+Fixed Fixed::operator*(Fixed const & nbr) const {
+	return Fixed(this->toFloat() * nbr.toFloat());
+}
+
+Fixed Fixed::operator/(Fixed const & nbr) const {
+	return Fixed(this->toFloat() / nbr.toFloat());
+}
+
+Fixed Fixed::operator+(Fixed const & nbr) const {
+	return Fixed(this->toFloat() + nbr.toFloat());
+}
+
+Fixed Fixed::operator-(Fixed const & nbr) const {
+	return Fixed(this->toFloat() - nbr.toFloat());
 }
 
 Fixed & Fixed::operator++(void) {
-    this->fixedPoint++;
-    return (*this);
+	this->fixedPoint++;
+	return (*this);
 }
 
-Fixed Fixed::operator++(int nbr) {
-    (void)nbr;
-    Fixed tmp(*this);
-    ++(*this);
-    return (*this);
+Fixed Fixed::operator++(int) {
+	Fixed tmp(*this);
+	++(*this);
+	return (tmp);
 }
 
 Fixed & Fixed::operator--(void) {
-    this->fixedPoint--;
-    return (*this);
+	this->fixedPoint--;
+	return (*this);
 }
 
-Fixed Fixed::operator--(int nbr) {
-    (void)nbr;
-    Fixed tmp(*this);
-    --(*this);
-    return (*this);
+Fixed Fixed::operator--(int) {
+	Fixed tmp(*this);
+	--(*this);
+	return (tmp);
 }
 
-const Fixed & Fixed::min(Fixed const & nbr1, Fixed const & nbr2) {
-    if (nbr1.getFixedPoint() < nbr2.getFixedPoint())
-        return (nbr1);
-    else
-        return (nbr2);
+Fixed const & Fixed::min(Fixed const & nbr1, Fixed const & nbr2) {
+	if (nbr1 < nbr2)
+		return (nbr1);
+	else
+		return (nbr2);
 }
 
 Fixed & Fixed::min(Fixed & nbr1, Fixed & nbr2) {
-    if (nbr1.getFixedPoint() < nbr2.getFixedPoint())
-        return (nbr1);
-    else
-        return (nbr2);
+	if (nbr1 < nbr2)
+		return (nbr1);
+	else
+		return (nbr2);
 }
 
-const Fixed & Fixed::max(Fixed const & nbr1, Fixed const & nbr2) {
-    if (nbr1.getFixedPoint() > nbr2.getFixedPoint())
-        return (nbr1);
-    else
-        return (nbr2);
+Fixed const & Fixed::max(Fixed const & nbr1, Fixed const & nbr2) {
+	if (nbr1 > nbr2)
+		return (nbr1);
+	else
+		return (nbr2);
 }
 
 Fixed & Fixed::max(Fixed & nbr1, Fixed & nbr2) {
-    if (nbr1.getFixedPoint() > nbr2.getFixedPoint())
-        return (nbr1);
-    else
-        return (nbr2);
+	if (nbr1 > nbr2)
+		return (nbr1);
+	else
+		return (nbr2);
 }

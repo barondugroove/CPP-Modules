@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:38:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/08 18:28:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/10 15:08:53 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ std::string replace(std::string buffer, std::string search, std::string replace)
 {
 	size_t	pos;
 
-	if (search == replace || search.empty() || replace.empty())
+	if (search == replace || search.empty())
 		return (buffer);
 	pos = buffer.find(search);
 	while (pos != std::string::npos)

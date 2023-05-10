@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:29:47 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/10 01:37:22 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/10 12:31:41 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Fixed {
 
         float   toFloat(void) const;
         int     toInt(void) const;
-    
+
     private :
         int fixedPoint;
         static const int bits = 8;

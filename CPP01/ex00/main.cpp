@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 18:38:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/02 19:29:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/10 15:42:21 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	Zombie *zombie1;
 	Zombie *zombie2;

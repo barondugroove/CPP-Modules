@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:30:24 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/10 01:40:17 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/10 12:33:35 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed(const int nbr) {
 
 Fixed::Fixed(const float nbr) {
     std::cout << "Float constructor called." << std::endl;
-    int fixedPoint = (int)(nbr * (1 << this->bits));
+    int fixedPoint = roundf((nbr * (1 << this->bits)));
     this->fixedPoint = fixedPoint;
     return ;
 }
@@ -59,7 +59,7 @@ Fixed & Fixed::operator=(Fixed const & src) {
 
 int Fixed::toInt(void) const {
     int originalInt = fixedPoint >> this->bits;
-    return (originalInt); 
+    return (originalInt);
 }
 
 float Fixed::toFloat(void) const {
