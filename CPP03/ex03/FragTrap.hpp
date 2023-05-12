@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 18:18:30 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/11 17:12:00 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/12 16:59:23 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/12 17:50:08 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include <iostream>
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-class Point {
-	public :
-		Point(void);
-		Point(const float x, const float y);
-		Point(Point const & src);
-		~Point(void);
+#include "ClapTrap.hpp"
+#include <string>
 
-		Point & operator=(Point const & src);
-		Point operator-(Point const & nbr) const;
+class FragTrap : virtual public ClapTrap {
+    public:
+        FragTrap(void);
+        FragTrap(std::string name);
+        FragTrap(FragTrap const &src);
+        ~FragTrap(void);
 
-		float getX(void) const;
-		float getY(void) const;
+        FragTrap &operator=(FragTrap const &rhs);
 
-	private :
-		const Fixed _x;
-		const Fixed _y;
+        void highFivesGuys(void);
+        void updateStats(void);
 };
+
+#endif

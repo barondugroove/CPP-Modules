@@ -6,20 +6,21 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/11 14:54:32 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/12 18:52:51 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex03
 
 SRCS =	main.cpp \
-		Fixed.cpp \
-		Point.cpp \
-		bsp.cpp
+		ClapTrap.cpp \
+		ScavTrap.cpp \
+		FragTrap.cpp \
+		DiamondTrap.cpp
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98 -g
 
 OBJS = $(SRCS:.cpp=.o)
 

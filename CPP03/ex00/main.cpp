@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 18:18:30 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/11 17:12:00 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/12 15:07:53 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 
-class Point {
-	public :
-		Point(void);
-		Point(const float x, const float y);
-		Point(Point const & src);
-		~Point(void);
+int main(void) {
+	ClapTrap clapTrap("ClapTrap");
+	ClapTrap clapTrap2(clapTrap);
+	ClapTrap clapTrap3;
+	clapTrap3 = clapTrap2;
 
-		Point & operator=(Point const & src);
-		Point operator-(Point const & nbr) const;
-
-		float getX(void) const;
-		float getY(void) const;
-
-	private :
-		const Fixed _x;
-		const Fixed _y;
-};
+	clapTrap.attack("target");
+	clapTrap.takeDamage(10);
+	clapTrap.beRepaired(10);
+	return (0);
+}

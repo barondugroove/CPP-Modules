@@ -6,16 +6,15 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/11 14:54:32 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/12 15:58:07 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex03
+NAME = ex01
 
 SRCS =	main.cpp \
-		Fixed.cpp \
-		Point.cpp \
-		bsp.cpp
+		ClapTrap.cpp \
+		ScavTrap.cpp
 
 CC = c++
 
