@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:34:44 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/11 17:57:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/17 16:36:37 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(void)
 {
 	{
 		Point a = Point(0, 0);
-		Point b = Point(4, 0);
-		Point c = Point(2, 4);
-		Point point = Point(2, 1);
+		Point b = Point(4, 6);
+		Point c = Point(8, 0);
+		Point point = Point(4, 0);
 		if (bsp(a, b, c, point) == true)
 			std::cout << "Point is in the triangle" << std::endl;
 		else
@@ -35,6 +35,6 @@ int	main(void)
 			std::cout << "Point is in the triangle" << std::endl;
 		else
 			std::cout << "Point is not in the triangle" << std::endl;
-	}			
+	}
 	return 0;
 }

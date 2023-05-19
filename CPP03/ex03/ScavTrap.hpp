@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:30:57 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 17:50:18 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/19 12:15:40 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ScavTrap : virtual public ClapTrap {
         ~ScavTrap(void);
 
         ScavTrap &operator=(ScavTrap const &rhs);
-        
+
         void attack(std::string const & target);
         void guardGate(void);
         void updateStats(void);

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/09 17:03:39 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/17 12:29:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int main(void) {
 	Fixed c;
 
 	c = b;
-	
+
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
-	
+
 	return (0);
 }
