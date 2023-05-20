@@ -6,28 +6,34 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/20 17:46:02 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/12 19:43:36 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
-int main(void) {
-	ScavTrap scavTrap("ScavTrap");
-	ScavTrap scavTrap2(scavTrap);
-	ScavTrap scavTrap3;
-	scavTrap3 = scavTrap2;
-
+int main()
+{
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	const WrongAnimal* wrong = new WrongCat();
 	std::cout << std::endl;
-	scavTrap.attack("target");
-	scavTrap.guardGate();
-	for (int i = 0; i < 3; i++)
-		scavTrap.takeDamage(scavTrap.getAttackDamage());
-	scavTrap.beRepaired(10);
-	scavTrap.takeDamage(scavTrap.getAttackDamage());
-	scavTrap.takeDamage(scavTrap.getAttackDamage());
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	std::cout << wrong->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	wrong->makeSound();
+	meta->makeSound();
 	std::cout << std::endl;
+	delete (meta);
+	delete (j);
+	delete (i);
 	return (0);
 }

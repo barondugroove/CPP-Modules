@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:59:08 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 18:52:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/20 18:03:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ FragTrap &FragTrap::operator=(FragTrap const &rhs) {
 }
 
 void FragTrap::highFivesGuys(void) {
-    std::cout << "FragTrap " << this->getName() << " is asking for high fives" << std::endl;
+    if (this->getHitPoints() <= 0)
+        std::cout << "FragTrap " << this->getName() << " is dead and cant get high fives. 💀" << std::endl;
+    else
+        std::cout << "FragTrap " << this->getName() << " is asking for high fives" << std::endl;
 }
 
 void FragTrap::updateStats(void) {

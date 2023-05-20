@@ -6,28 +6,31 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/20 17:46:02 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/12 20:22:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
-int main(void) {
-	ScavTrap scavTrap("ScavTrap");
-	ScavTrap scavTrap2(scavTrap);
-	ScavTrap scavTrap3;
-	scavTrap3 = scavTrap2;
-
-	std::cout << std::endl;
-	scavTrap.attack("target");
-	scavTrap.guardGate();
-	for (int i = 0; i < 3; i++)
-		scavTrap.takeDamage(scavTrap.getAttackDamage());
-	scavTrap.beRepaired(10);
-	scavTrap.takeDamage(scavTrap.getAttackDamage());
-	scavTrap.takeDamage(scavTrap.getAttackDamage());
-	std::cout << std::endl;
+int main()
+{
+	Animal *zoo[10];
+	
+	for (int i = 0; i < 10; i++)
+	{
+		if (i % 2 == 0)
+			zoo[i] = new Dog();
+		else
+			zoo[i] = new Cat();
+		zoo[i]->makeSound();
+		std::cout << std::endl;
+	}
+	for (int i = 0; i < 10; i++)
+		delete zoo[i];
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:59 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 18:51:35 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/20 18:03:21 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,24 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &rhs) {
 }
 
 void ScavTrap::attack(std::string const & target) {
-    std::cout << "ScavTrap " << this->getName() << " attack " << target << ", causing " << this->getAttackDamage() << " points of damage !" << std::endl;
+    if (this->getHitPoints() <= 0)
+		std::cout << "ScavTrap " << this->getName() << " is dead. 💀" << std::endl;
+	else if (this->getEnergyPoints() < 1)
+		std::cout << "ScavTrap " << this->getName() << " has no energy left and can not attack. 🔋" << std::endl;
+	else
+	{
+		this->setEnergyPoints(this->getEnergyPoints() - 1);
+		std::cout << "ScavTrap " << this->getName() << " attack " << target << ", causing " << this->getAttackDamage() << " points of damage." << std::endl;
+		std::cout << "ScavTrap " << this->getName() << " lost 1 energy point and now has " << this->getEnergyPoints() << " left" << std::endl;
+	}
     return;
 }
 
 void ScavTrap::guardGate(void) {
-    std::cout << "ScavTrap " << this->getName() << " has enterred Gate keeper mode" << std::endl;
+    if (this->getHitPoints() <= 0)
+        std::cout << "ScavTrap " << this->getName() << " is dead and cant guard the gate. 💀" << std::endl;
+    else
+        std::cout << "ScavTrap " << this->getName() << " has enterred Gate keeper mode" << std::endl;
     return;
 }
 
