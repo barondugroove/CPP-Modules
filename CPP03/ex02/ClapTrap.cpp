@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:05:04 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/20 17:46:46 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/22 15:51:36 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,37 @@ void ClapTrap::attack(std::string const & target) {
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->_hitPoints <= 0)
-		std::cout << "ClapTrap " << this->_name << " is already dead. 💀" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " is already dead.💀" << std::endl;
 	else
 	{
-		this->_hitPoints -= amount;
+		if ((long)this->_hitPoints - (long)amount <= 0)
+			this->_hitPoints = 0;
+		else
+			this->_hitPoints -= amount;
 		std::cout << "ClapTrap " << this->_name << " take " << amount << " points of damage!" << std::endl;
 		if (this->_hitPoints <= 0)
-			std::cout << "ClapTrap " << this->_name << " died from the attack. 🪦" << std::endl;
+			std::cout << "ClapTrap " << this->_name << " died from the attack.🪦" << std::endl;
 		else
-			std::cout << "ClapTrap " << this->_name << " now has " << this->_hitPoints << " left." << std::endl;
+			std::cout << "ClapTrap " << this->_name << " now has " << this->_hitPoints << " hit points left." << std::endl;
 	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (this->_hitPoints <= 0)
-		std::cout << "ClapTrap " << this->_name << " is already dead and can not repair itself. 💀" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " is already dead and can not repair itself.💀" << std::endl;
+	else if (this->_energyPoints <= 0)
+		std::cout << "ClapTrap " << this->_name << " has no energy left and can not repair itself.🔋" << std::endl;
 	else
 	{
+		if ((long)amount + (long)this->_hitPoints > 4294967295)
+		{
+			std::cout << "Amount repair error." << std::endl;
+			return ;
+		}
 		this->_hitPoints += amount;
+		this->_energyPoints--;
 		std::cout << "ClapTrap " << this->_name << " repaired " << amount << " points of damage!" << std::endl;
-		std::cout << "ClapTrap " << this->_name << " now has " << this->_hitPoints << " left." << std::endl;
+		std::cout << "ClapTrap " << this->_name << " now has " << this->_hitPoints << " hit points." << std::endl;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:13:12 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 19:57:44 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/25 16:09:42 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@
 #include "Brains.hpp"
 
 class Dog : public Animal {
-    public:
-        Dog(void);
-        Dog(Dog const &src);
-        virtual ~Dog(void);
+	public:
+		Dog(void);
+		Dog(Dog const &src);
+		virtual ~Dog(void);
 
-        Dog &operator=(Dog const &rhs);
-    
-    private :
-        Brains *brain;
+		Dog &operator=(Dog const &rhs);
+
+		void makeSound(void) const;
+		std::string getIdeas(int index) const;
+		void setIdeas(std::string idea);
+
+	private :
+		Brains *_brain;
 };
 
 #endif

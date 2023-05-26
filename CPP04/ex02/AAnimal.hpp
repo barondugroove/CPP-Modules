@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:05:30 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 20:25:58 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/26 16:50:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 
 #include <string>
 
-class Animal {
-    public:
-        Animal(Animal const &src);
-        ~Animal(void);
+class AAnimal {
+	public:
+		AAnimal(void);
+		AAnimal(AAnimal const &src);
+		virtual ~AAnimal(void);
 
-        Animal &operator=(Animal const &rhs);
+		AAnimal &operator=(AAnimal const &rhs);
 
-        std::string getType(void) const;
+		std::string getType(void) const;
+		virtual void makeSound(void) const = 0;
 
-        void makeSound(void) const;
-
-    protected :
-        std::string type;
-
-    private :
-        Animal(void);
+	protected :
+		std::string type;
 };
 
 #endif

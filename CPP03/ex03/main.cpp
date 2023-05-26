@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/20 18:06:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/22 16:29:45 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 #include <iostream>
 
 int main(void) {
+	std::cout << "CONSTRUCTOR MESSAGES :" << std::endl;
 	DiamondTrap diamondTrap("John Diamond");
 	DiamondTrap diamondTrap2(diamondTrap);
 	DiamondTrap diamondTrap3;
 	diamondTrap3 = diamondTrap2;
 
 	std::cout << std::endl;
+	std::cout << "ACTIONS :" << std::endl;
 	diamondTrap.attack("James Bond");
 	diamondTrap.takeDamage(10);
 	diamondTrap.takeDamage(10);
@@ -33,5 +35,6 @@ int main(void) {
 	diamondTrap.attack("target");
 	diamondTrap.whoAmI();
 	std::cout << std::endl;
+	std::cout << "DESTRUCTOR MESSAGES :" << std::endl;
 	return (0);
 }

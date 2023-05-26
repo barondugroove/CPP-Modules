@@ -6,14 +6,14 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/12 20:23:00 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/25 17:39:24 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex02
+NAME = ex01
 
 SRCS =	main.cpp \
-		Animal.cpp \
+		AAnimal.cpp \
 		Dog.cpp \
 		Cat.cpp \
 		WrongAnimal.cpp \

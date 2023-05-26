@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/12 18:52:51 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/22 16:21:08 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS =	main.cpp \
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -g
 
 OBJS = $(SRCS:.cpp=.o)
 

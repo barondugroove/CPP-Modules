@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:51:13 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 19:55:49 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/25 16:58:43 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@
 #include <string>
 
 class Brains {
-    public :
-        Brains(void);
-        Brains(Brains const &src);
-        ~Brains(void);
+	public :
+		Brains(void);
+		Brains(Brains const &src);
+		~Brains(void);
 
-        Brains &operator=(Brains const &rhs);
+		Brains &operator=(Brains const &rhs);
 
-        std::string ideas[100];
+		std::string getIdeas(int index) const;
+		void setIdeas(std::string idea);
+
+	private :
+		std::string ideas[100];
 };
 
 #endif

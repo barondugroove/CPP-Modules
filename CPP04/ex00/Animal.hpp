@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:05:30 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 19:26:59 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/25 11:53:06 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,18 @@
 #include <string>
 
 class Animal {
-    public:
-        Animal(void);
-        Animal(Animal const &src);
-        virtual ~Animal(void);
+	public:
+		Animal(void);
+		Animal(Animal const &src);
+		virtual ~Animal(void);
 
-        Animal &operator=(Animal const &rhs);
+		Animal &operator=(Animal const &rhs);
 
-        std::string getType(void) const;
+		std::string getType(void) const;
+		virtual void makeSound(void) const;
 
-        void makeSound(void) const;
-
-    protected :
-        std::string type;
+	protected :
+		std::string type;
 };
 
 #endif

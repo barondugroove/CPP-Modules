@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:30:24 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/17 16:21:37 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/22 14:38:54 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,31 @@
 #include <iomanip>
 
 Fixed::Fixed(void) {
+	std::cout << "Default constructor called." << std::endl;
     fixedPoint = 0;
     return ;
 }
 
 Fixed::Fixed(const int nbr) {
+	std::cout << "Int constructor called." << std::endl;
     this->fixedPoint = nbr << this->bits;
     return ;
 }
 
 Fixed::Fixed(const float nbr) {
+	std::cout << "Float constructor called." << std::endl;
     int fixedPoint = (int)(roundf(nbr * (1 << this->bits)));
     this->fixedPoint = fixedPoint;
     return ;
 }
 
 Fixed::~Fixed(void) {
+	std::cout << "Destructor called." << std::endl;
     return ;
 }
 
 Fixed::Fixed(Fixed const & src) {
+	std::cout << "Copy construcor called." << std::endl;
     *this = src;
     return ;
 }

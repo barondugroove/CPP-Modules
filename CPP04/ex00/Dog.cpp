@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:17:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/12 19:18:55 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/25 11:46:48 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 #include <iostream>
 
 Dog::Dog(void) {
-    std::cout << "Dog default constructor called" << std::endl;
-    this->type = "Dog";
+	std::cout << "Dog default constructor called" << std::endl;
+	this->type = "Dog";
 }
 
-Dog::Dog(Dog const &src) {
-    std::cout << "Dog copy constructor called" << std::endl;
-    *this = src;
+Dog::Dog(Dog const &src) : Animal() {
+	std::cout << "Dog copy constructor called" << std::endl;
+	*this = src;
 }
 
 Dog::~Dog(void) {
-    std::cout << "Dog destructor called" << std::endl;
+	std::cout << "Dog destructor called" << std::endl;
 }
 
 Dog &Dog::operator=(Dog const &rhs) {
-    std::cout << "Dog assignation operator called" << std::endl;
-    if (this != &rhs)
-        *this = rhs;
-    return *this;
+	std::cout << "Dog assignation operator called" << std::endl;
+	if (this != &rhs)
+		*this = rhs;
+	return *this;
+}
+
+void Dog::makeSound(void) const {
+		std::cout << "Bark Bark" << std::endl;
 }
