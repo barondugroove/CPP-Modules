@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.hpp                                        :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 19:05:30 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/29 14:04:59 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/29 16:45:27 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/29 17:04:58 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-#include <string>
+#include "AMateria.hpp"
+#include "IMateriaSource.hpp"
 
-class AAnimal {
-	public:
-		AAnimal(void);
-		AAnimal(AAnimal const &src);
-		virtual ~AAnimal(void);
+class MateriaSource : public IMateriaSource {
+	public :
+		MateriaSource(void);
+		MateriaSource(std::string const & type);
+		~MateriaSource(void);
 
-		AAnimal &operator=(AAnimal const &rhs);
-
-		std::string getType(void) const;
-		virtual void makeSound(void) const = 0;
-
-	protected :
-		std::string type;
+		MateriaSource &operator=(MateriaSource const &rhs);
 };
 
 #endif

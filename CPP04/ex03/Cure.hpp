@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.hpp                                        :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 19:05:30 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/29 14:04:59 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/29 15:00:05 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/29 16:10:08 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 #include <string>
 
-class AAnimal {
-	public:
-		AAnimal(void);
-		AAnimal(AAnimal const &src);
-		virtual ~AAnimal(void);
+class Cure : public AMateria {
+	public :
+		Cure(void);
+		Cure(std::string const & type);
+		~Cure(void);
 
-		AAnimal &operator=(AAnimal const &rhs);
+		Cure &operator=(Cure const &rhs);
+		AMateria* clone(Cure const &rhs) const;
+		void use(ICharacter &target);
 
-		std::string getType(void) const;
-		virtual void makeSound(void) const = 0;
-
-	protected :
-		std::string type;
+	private :
 };
 
 #endif

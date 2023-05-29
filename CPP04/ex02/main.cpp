@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 17:46:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/05/29 14:11:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int main()
 {
 	int		nbr = 4;
 	AAnimal *zoo[nbr];
+	// Can't instantiate cause AAnimal is an abstract class.
+	//AAnimal *test = AAnimal();
 
 	for (int i = 0; i < nbr; i++)
 	{

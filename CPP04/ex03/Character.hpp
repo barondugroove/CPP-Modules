@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAnimal.hpp                                        :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 19:05:30 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/29 14:04:59 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/29 16:40:17 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/29 17:04:48 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-#include <string>
+#include "ICharacter.hpp"
+#include "MateriaSource.hpp"
 
-class AAnimal {
-	public:
-		AAnimal(void);
-		AAnimal(AAnimal const &src);
-		virtual ~AAnimal(void);
+class Character : public ICharacter {
+	public :
+		Character();
+		Character(const std::string &name);
+		~Character();
 
-		AAnimal &operator=(AAnimal const &rhs);
+		Character &operator=(Character const &rhs);
 
-		std::string getType(void) const;
-		virtual void makeSound(void) const = 0;
-
-	protected :
-		std::string type;
+	private :
+		std::string _name;
+		Materia 	inventory[4];
 };
 
 #endif
