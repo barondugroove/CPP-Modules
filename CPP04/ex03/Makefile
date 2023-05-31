@@ -6,20 +6,18 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/29 16:58:40 by bchabot          ###   ########.fr        #
+#    Updated: 2023/05/31 16:01:30 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex03
+NAME = ex03bisnew
 
 SRCS =	main.cpp \
 		AMateria.cpp \
-		IMateriaSource.cpp \
-		MateriaSource.cpp \
-		Character.cpp \
-		ICharacter.cpp \
-		Cure.cpp \
 		Ice.cpp \
+		Cure.cpp \
+		Character.cpp \
+		MateriaSource.cpp
 
 CC = c++
 

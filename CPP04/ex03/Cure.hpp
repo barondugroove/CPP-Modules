@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 15:00:05 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/29 16:10:08 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/30 16:14:28 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/31 17:25:04 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 # define CURE_HPP
 
 #include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include <string>
+class ICharacter;
 
 class Cure : public AMateria {
 	public :
 		Cure(void);
-		Cure(std::string const & type);
+		Cure(Cure const &src);
 		~Cure(void);
 
 		Cure &operator=(Cure const &rhs);
-		AMateria* clone(Cure const &rhs) const;
-		void use(ICharacter &target);
 
-	private :
+		void use(ICharacter &target);
+		AMateria* clone(void) const;
 };
 
 #endif

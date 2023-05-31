@@ -5,24 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 16:45:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/29 17:04:58 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/31 12:13:43 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/31 16:01:43 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-#include "AMateria.hpp"
 #include "IMateriaSource.hpp"
+#include <string>
 
 class MateriaSource : public IMateriaSource {
 	public :
-		MateriaSource(void);
-		MateriaSource(std::string const & type);
-		~MateriaSource(void);
+		MateriaSource();
+		MateriaSource(MateriaSource const &src);
+		~MateriaSource();
 
 		MateriaSource &operator=(MateriaSource const &rhs);
+
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const &type);
+
+	protected :
+		AMateria*	inventory[4];
 };
 
 #endif

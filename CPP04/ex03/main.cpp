@@ -5,30 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 16:35:58 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/29 17:04:22 by bchabot          ###   ########.fr       */
+/*   Created: 2023/05/30 16:39:15 by bchabot           #+#    #+#             */
+/*   Updated: 2023/05/31 17:17:10 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
+#include "AMateria.hpp"
 #include "Character.hpp"
-#include "Ice.hpp"
 #include "Cure.hpp"
+#include "Ice.hpp"
+#include <iostream>
 
 int main()
 {
+	std::cout << "Constructor messages :" << std::endl;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
+	ICharacter* bob = new Character("bob");
+
+	std::cout << std::endl << "Test messages :" << std::endl;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
+	tmp = src->createMateria("fire");
+	me->equip(tmp);
 	me->use(0, *bob);
 	me->use(1, *bob);
+	me->use(2, *bob);
+
+	std::cout << std::endl << "Destructor messages :" << std::endl;
 	delete bob;
 	delete me;
 	delete src;
