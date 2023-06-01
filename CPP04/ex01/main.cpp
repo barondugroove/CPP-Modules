@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 17:30:30 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/01 17:48:40 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,21 @@ int main()
 		delete zoo[i];
 
 	std::cout << std::endl;
-	Cat *pussInboots = new Cat();
+	Cat *pussInBoots = new Cat();
 	Cat *garfield = new Cat();
 	Dog *milou = new Dog();
 	Dog *pluto = new Dog();
 	std::cout << std::endl;
 
-	*garfield = *pussInboots;
+	*garfield = *pussInBoots;
 	*pluto = *milou;
 
 	std::cout << std::endl;
-	pussInboots->setIdeas("PEE");
+	pussInBoots->setIdeas("PEE");
 	garfield->setIdeas("I HATE MONDAYS");
-	std::cout << "Puss In Boots : " << pussInboots->getIdeas(0);
+	std::cout << "Puss In Boots : " << pussInBoots->getIdeas(0);
 	std::cout << " || Garfield : " << garfield->getIdeas(0) << std::endl;
+	std::cout << "Garfield : " << garfield->getIdeas(100000000) << std::endl;
 	pluto->setIdeas("EAT");
 	pluto->setIdeas("SLEEP");
 	milou->setIdeas("BARK");
@@ -64,7 +65,7 @@ int main()
 	}
 	std::cout << std::endl;
 	std::cout << "DESTRUCTOR MESSAGES" << std::endl;
-	delete(pussInboots);
+	delete(pussInBoots);
 	delete(garfield);
 	delete(milou);
 	delete(pluto);

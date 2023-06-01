@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:17:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 11:46:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/01 17:14:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ Dog &Dog::operator=(Dog const &rhs) {
 }
 
 void Dog::makeSound(void) const {
-		std::cout << "Bark Bark" << std::endl;
+	std::cout << "Bark Bark" << std::endl;
 }

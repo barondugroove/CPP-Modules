@@ -6,11 +6,11 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/31 16:01:30 by bchabot          ###   ########.fr        #
+#    Updated: 2023/06/01 17:49:56 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex03bisnew
+NAME = ex03
 
 SRCS =	main.cpp \
 		AMateria.cpp \

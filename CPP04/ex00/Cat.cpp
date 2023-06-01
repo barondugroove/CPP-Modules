@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:17:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 14:22:24 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/01 17:14:32 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ Cat &Cat::operator=(Cat const &rhs) {
 }
 
 void Cat::makeSound(void) const {
-		std::cout << "Meow Meow" << std::endl;
+	std::cout << "Meow Meow" << std::endl;
 }

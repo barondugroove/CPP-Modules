@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:17:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/29 15:13:03 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/01 17:58:24 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void Cat::makeSound(void) const {
 }
 
 std::string Cat::getIdeas(int index) const {
+	if (index > 100 || index < 0)
+		return ("no idea for this index... :(");
 	return this->_brain->getIdeas(index);
 }
 

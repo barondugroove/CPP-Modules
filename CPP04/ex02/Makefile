@@ -6,11 +6,11 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/25 17:39:24 by bchabot          ###   ########.fr        #
+#    Updated: 2023/06/01 17:55:53 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 SRCS =	main.cpp \
 		AAnimal.cpp \
