@@ -6,13 +6,11 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:29:07 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/31 16:51:07 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/02 16:04:12 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
-#include "Cure.hpp"
-#include "Ice.hpp"
 #include <iostream>
 
 MateriaSource::MateriaSource() {
@@ -37,6 +35,8 @@ MateriaSource & MateriaSource::operator=(MateriaSource const &rhs) {
 
 MateriaSource::~MateriaSource() {
 	std::cout << "MateriaSource destructor called." << std::endl;
+	for (int i = 0; i < 4; i++)
+		delete inventory[i];
 	return ;
 }
 

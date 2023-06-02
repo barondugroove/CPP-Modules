@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:13:43 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/31 16:01:43 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/02 16:04:28 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MATERIASOURCE_HPP
 
 #include "IMateriaSource.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
 #include <string>
 
 class MateriaSource : public IMateriaSource {

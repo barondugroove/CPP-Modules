@@ -6,15 +6,13 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 16:39:15 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/01 17:00:33 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/02 16:06:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 #include "AMateria.hpp"
 #include "Character.hpp"
-#include "Cure.hpp"
-#include "Ice.hpp"
 #include <iostream>
 
 int main()
@@ -25,18 +23,20 @@ int main()
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
+	AMateria* tmp2;
 	ICharacter* bob = new Character("bob");
 
 	std::cout << std::endl << "Test messages :" << std::endl;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	tmp2 = src->createMateria("cure");
+	me->equip(tmp2);
 	tmp = src->createMateria("fire");
 	me->equip(tmp);
 	me->use(0, *bob);
 	me->use(1, *bob);
-	me->use(2, *bob);
+	me->unequip(1);
+	delete(tmp2);
 
 	std::cout << std::endl << "Destructor messages :" << std::endl;
 	delete bob;

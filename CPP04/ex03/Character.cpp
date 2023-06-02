@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 11:39:42 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/31 17:17:19 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/02 16:06:36 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ Character::Character(std::string const &name) : _name(name) {
 	return ;
 }
 
-/*――――――――――――――――――――――――――――――――――――――――\\
-\\                                        //
-// Don'f forget to do the deep copy !!!!! \\
-\\________________________________________*/
 Character::Character(Character const &src) {
 	std::cout << "Character copy constructor called." << std::endl;
 	*this = src;
@@ -41,13 +37,18 @@ Character::Character(Character const &src) {
 
 Character::~Character(void) {
 	std::cout << "Default destructor called." << std::endl;
+	for (int i = 0; i < 4; i++)
+		delete _inventory[i];
 	return ;
 }
 
 Character & Character::operator=(Character const &rhs) {
 	std::cout << "Character assignation operator called" << std::endl;
 	if (this != &rhs)
-		*this = rhs;
+	{
+		*this->_inventory = *rhs._inventory;
+		this->_name = rhs.getName();
+	}
 	return *this;
 }
 
@@ -66,13 +67,22 @@ void Character::equip(AMateria* m) {
 }
 
 void Character::unequip(int idx) {
-	// Do not forget to handle the memory of unequiped materias.
+	if (idx > 3 || idx < 0)
+	{
+		std::cout << this->getName() << " can't unequip inventory slot n°" << idx << std::endl;
+		return ;
+	}
 	_inventory[idx] = NULL;
 	return ;
 }
 
 void Character::use(int idx, ICharacter &target) {
-	if (_inventory[idx] == NULL)
+	if (idx > 3 || idx < 0)
+	{
+		std::cout << this->getName() << "can't attack, inventory slot n°" << idx << " does not exist" << std::endl;
+		return ;
+	}
+	else if (_inventory[idx] == NULL)
 	{
 		std::cout << this->getName() << " can't attack, inventory slot n°" << idx << " is empty." << std::endl;
 		return ;
