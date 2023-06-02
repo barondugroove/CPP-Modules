@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:39:48 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 14:29:00 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/02 16:24:21 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class WrongAnimal {
 		WrongAnimal &operator=(WrongAnimal const &rhs);
 
 		std::string getType(void) const;
-		virtual void makeSound(void) const;
+		virtual void makeSound(void) const = 0;
 
 	protected :
 		std::string type;

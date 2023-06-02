@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:17:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/01 17:58:26 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/02 16:20:54 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void Dog::makeSound(void) const {
 }
 
 std::string Dog::getIdeas(int index) const {
-	if (index > 100 || index < 0)
+	if (index >= 100 || index < 0)
 		return ("no idea for this index... :(");
 	return this->_brain->getIdeas(index);
 }

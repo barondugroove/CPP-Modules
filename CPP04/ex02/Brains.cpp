@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:54:28 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 17:01:51 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/02 16:20:42 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ Brains &Brains::operator=(Brains const &rhs) {
 }
 
 std::string Brains::getIdeas(int index) const {
+	if (index >= 100 || index < 0)
+		return ("no idea for this index... :(");
 	return (this->ideas[index]);
 }
 
