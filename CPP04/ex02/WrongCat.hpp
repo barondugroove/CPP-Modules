@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:41:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 14:28:43 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:53:16 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define WRONGCAT_HPP
 
 #include "WrongAnimal.hpp"
-#include "Brains.hpp"
+#include "Brain.hpp"
 
 class WrongCat : public WrongAnimal {
 	public:
@@ -27,7 +27,7 @@ class WrongCat : public WrongAnimal {
 		void makeSound(void) const;
 
 	private :
-		Brains *_brain;
+		Brain *_brain;
 };
 
 #endif

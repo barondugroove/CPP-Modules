@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:38:59 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/22 16:28:35 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/05 14:57:09 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ ScavTrap::~ScavTrap(void) {
 }
 
 ScavTrap &ScavTrap::operator=(ScavTrap const &rhs) {
-    std::cout << "ScavTrap Assignation operator called" << std::endl;
-    if (this != &rhs) {
-        this->setName(rhs.getName());
-        this->setAttackDamage(rhs.getAttackDamage());
-        this->setEnergyPoints(rhs.getEnergyPoints());
-        this->setHitPoints(rhs.getHitPoints());
-    }
-    return (*this);
+	std::cout << "ScavTrap Assignation operator called" << std::endl;
+	if (this != &rhs) {
+		this->setName(rhs.getName());
+		this->setAttackDamage(rhs.getAttackDamage());
+		this->setEnergyPoints(rhs.getEnergyPoints());
+		this->setHitPoints(rhs.getHitPoints());
+	}
+	return (*this);
 }
 
 void ScavTrap::attack(std::string const & target) {

@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/05/12 20:05:51 by bchabot          ###   ########.fr        #
+#    Updated: 2023/06/06 11:50:55 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS =	main.cpp \
 		Cat.cpp \
 		WrongAnimal.cpp \
 		WrongCat.cpp \
-		Brains.cpp
+		Brain.cpp
 
 CC = c++
 

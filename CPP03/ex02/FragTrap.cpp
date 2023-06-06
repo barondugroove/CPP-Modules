@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:59:08 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/22 16:11:22 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/05 15:33:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 #include <iostream>
 
 FragTrap::FragTrap(void) : ClapTrap() {
-    std::cout << "FragTrap default constructor called" << std::endl;
-    this->updateStats();
+	std::cout << "FragTrap default constructor called" << std::endl;
+	this->updateStats();
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
-    std::cout << "FragTrap constructor called" << std::endl;
-    this->updateStats();
+	std::cout << "FragTrap constructor called" << std::endl;
+	this->updateStats();
 }
 
 FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src) {
-    std::cout << "FragTrap copy constructor called" << std::endl;
-    *this = src;
+	std::cout << "FragTrap copy constructor called" << std::endl;
+	*this = src;
 }
 
 FragTrap::~FragTrap(void) {
-    std::cout << "FragTrap destructor called" << std::endl;
+	std::cout << "FragTrap destructor called" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(FragTrap const &rhs) {
-    std::cout << "FragTrap assignation operator called" << std::endl;
-    if (this != &rhs) {
-        this->setName(rhs.getName());
-        this->setAttackDamage(rhs.getAttackDamage());
-        this->setEnergyPoints(rhs.getEnergyPoints());
-        this->setHitPoints(rhs.getHitPoints());
-    }
-    return (*this);
+	std::cout << "FragTrap assignation operator called" << std::endl;
+	if (this != &rhs) {
+		this->setName(rhs.getName());
+		this->setAttackDamage(rhs.getAttackDamage());
+		this->setEnergyPoints(rhs.getEnergyPoints());
+		this->setHitPoints(rhs.getHitPoints());
+	}
+	return (*this);
 }
 
 void FragTrap::highFivesGuys(void) {

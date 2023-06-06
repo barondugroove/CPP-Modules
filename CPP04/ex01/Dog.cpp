@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:17:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/02 16:20:23 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:51:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Dog::Dog(void) {
 	std::cout << "Dog default constructor called" << std::endl;
 	this->type = "Dog";
-	_brain = new Brains();
+	_brain = new Brain();
 }
 
 Dog::Dog(Dog const &src) : Animal() {

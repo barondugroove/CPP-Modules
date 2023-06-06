@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brains.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:51:13 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/01 17:47:31 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:50:57 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAINS_HPP
-# define BRAINS_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 #include <string>
 
-class Brains {
+class Brain {
 	public :
-		Brains(void);
-		Brains(Brains const &src);
-		~Brains(void);
+		Brain(void);
+		Brain(Brain const &src);
+		~Brain(void);
 
-		Brains &operator=(Brains const &rhs);
+		Brain &operator=(Brain const &rhs);
 
 		std::string getIdeas(int index) const;
 		void setIdeas(std::string idea);

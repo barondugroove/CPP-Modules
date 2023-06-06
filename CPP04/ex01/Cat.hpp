@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:13:12 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/25 16:47:12 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:51:19 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define Cat_HPP
 
 #include "Animal.hpp"
-#include "Brains.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal {
 	public:
@@ -29,7 +29,7 @@ class Cat : public Animal {
 		void setIdeas(std::string idea);
 
 	private :
-		Brains *_brain;
+		Brain *_brain;
 };
 
 #endif

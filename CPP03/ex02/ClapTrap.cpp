@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:05:04 by bchabot           #+#    #+#             */
-/*   Updated: 2023/05/22 15:51:36 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/05 15:36:18 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include <iostream>
 
 ClapTrap::ClapTrap(void) : _name("default"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << "ClapTrap default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-    std::cout << "ClapTrap constructor called" << std::endl;
+	std::cout << "ClapTrap constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src) {
-    std::cout << "ClapTrap copy constructor called" << std::endl;
-    *this = src;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
+	*this = src;
 }
 
 ClapTrap::~ClapTrap(void) {
@@ -31,15 +31,15 @@ ClapTrap::~ClapTrap(void) {
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs) {
-    std::cout << "ClapTrap assignation operator called" << std::endl;
-    if (this != &rhs)
-    {
-        this->_name = rhs._name;
-        this->_hitPoints = rhs._hitPoints;
-        this->_energyPoints = rhs._energyPoints;
-        this->_attackDamage = rhs._attackDamage;
-    }
-    return (*this);
+	std::cout << "ClapTrap assignation operator called" << std::endl;
+	if (this != &rhs)
+	{
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_energyPoints = rhs._energyPoints;
+		this->_attackDamage = rhs._attackDamage;
+	}
+	return (*this);
 }
 
 void ClapTrap::attack(std::string const & target) {

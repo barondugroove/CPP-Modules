@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:38:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/02 16:25:49 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:54:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
-#include "Brains.hpp"
+#include "Brain.hpp"
 #include <iostream>
 
 int main()

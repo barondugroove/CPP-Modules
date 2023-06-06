@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:17:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/02 16:25:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:54:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Cat::Cat(void) {
 	std::cout << "Cat default constructor called" << std::endl;
 	this->type = "Cat";
-	_brain = new Brains();
+	_brain = new Brain();
 }
 
 Cat::Cat(Cat const &src) : AAnimal() {
