@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:11:22 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/06 18:10:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 18:18:30 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ int main(void)
         Bureaucrat secretary("Monica Lewinsky", 150);
         Bureaucrat president("Bill Clinton", 1);
         secretary.incrementGrade();
-        std::cout << secretary.getName() << "'s grade is " << secretary.getGrade() << std::endl;
+        std::cout << secretary;
         secretary.decrementGrade();
-        std::cout << secretary.getName() << "'s grade is " << secretary.getGrade() << std::endl;
+        std::cout << secretary;
         president.decrementGrade();
-        std::cout << president.getName() << "'s grade is " << president.getGrade() << std::endl;
+        std::cout << president;
         president.incrementGrade();
-        std::cout << president.getName() << "'s grade is " << president.getGrade() << std::endl;
+        std::cout << president;
         president.incrementGrade();
+        std::cout << president;
     }
     catch (Bureaucrat::GradeTooHighException &e) {
         std::cout << e.what() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:56:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/06 18:09:05 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/06 18:14:56 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ class Bureaucrat {
 		std::string const	_name;
 		unsigned int		_grade;
 };
+
+std::ostream & operator<<(std::ostream &o, Bureaucrat const &src);
 
 #endif
