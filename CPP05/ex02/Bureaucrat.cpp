@@ -6,12 +6,12 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:56:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/07 17:31:27 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/08 18:02:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 #include <exception>
 
@@ -55,9 +55,9 @@ unsigned int Bureaucrat::getGrade(void) const {
 
 void Bureaucrat::check_grade(int grade) const {
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 void Bureaucrat::incrementGrade(void) {
@@ -83,10 +83,18 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat const &src) {
     return o;
 }
 
-void	Bureaucrat::signForm(Form &form) const {
+void	Bureaucrat::signForm(AForm &form) const {
 	form.checkSigning(this->getGrade());
 	if (form.isSigned())
-		throw Form::FormAlreadySigned();
+		throw AForm::AFormAlreadySigned();
 	form.beSigned(*this);
 	std::cout << this->_name << " signed " << form.getName() << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm &form) const {
+	form.checkSigning(this->getGrade());
+	if (!form.isSigned())
+		throw AForm::FormNotSigned();
+	form.execute(*this);
+	std::cout << this->_name << " executed " << form.getName() << std::endl;
 }
