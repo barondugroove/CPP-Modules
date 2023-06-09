@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:11:39 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/09 11:59:29 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/08 18:31:38 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	outfile << "/..o....\\ /..o.....\\	\n";
 	outfile << "^^^[_]^^^  ^^^[_]^^^	\n";
 }
+
+
+
+
