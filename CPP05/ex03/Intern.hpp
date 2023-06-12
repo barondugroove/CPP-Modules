@@ -6,11 +6,11 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 12:00:40 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/09 16:48:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 18:22:16 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTER_HPP
+#ifndef INTERN_HPP
 # define INTERN_HPP
 
 #include "AForm.hpp"
@@ -25,9 +25,9 @@ class Intern {
 
 		AForm* makeForm(std::string const & name, std::string const & target);
 
-		class NoContract : public std::exception {
+		class BadContractTemplate : public std::exception {
 			public :
-				virtual const char* watch() const throw();
+				virtual const char* what() const throw();
 		};
 };
 

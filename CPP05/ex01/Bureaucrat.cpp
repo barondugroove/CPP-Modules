@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:56:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/07 17:31:27 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 14:00:21 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs) {
 	return (*this);
 }
 
-std::string const Bureaucrat::getName(void) const {
+const std::string Bureaucrat::getName(void) const {
 	return (this->_name);
 }
 
@@ -55,9 +55,9 @@ unsigned int Bureaucrat::getGrade(void) const {
 
 void Bureaucrat::check_grade(int grade) const {
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 void Bureaucrat::incrementGrade(void) {
@@ -71,11 +71,11 @@ void Bureaucrat::decrementGrade(void) {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Grade is too high.");
+	return ("Bureaucrat grade is too high.");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Grade is too low.");
+	return ("Bureaucrat grade is too low.");
 }
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const &src) {
@@ -84,9 +84,6 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat const &src) {
 }
 
 void	Bureaucrat::signForm(Form &form) const {
-	form.checkSigning(this->getGrade());
-	if (form.isSigned())
-		throw Form::FormAlreadySigned();
 	form.beSigned(*this);
 	std::cout << this->_name << " signed " << form.getName() << std::endl;
 }

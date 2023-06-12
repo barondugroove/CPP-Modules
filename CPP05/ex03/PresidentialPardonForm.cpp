@@ -38,8 +38,8 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	this->checkSigning(executor.getGrade());
 	if (!this->isSigned())
-		throw AForm::FormNotSigned();
+		throw AForm::FormCantExec(executor.getName(), this->getName(), "form is not signed.");
+	this->checkExec(executor);
 	std::cout << this->target << "has been forgiven by Zaphod Beeblerox." << std::endl;
 }

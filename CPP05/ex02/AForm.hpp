@@ -31,7 +31,8 @@ class AForm {
 		unsigned int		getSignGrade(void) const;
 		unsigned int		getExecGrade(void) const;
 		bool				isSigned(void) const;
-		void				checkSigning(unsigned int grade) const;
+		void				checkSigning(Bureaucrat const &signee) const;
+		void				checkExec(Bureaucrat const &signee) const;
 		void				checkGrade(unsigned int grade) const;
 
 		void				beSigned(Bureaucrat const &signee);
@@ -47,14 +48,30 @@ class AForm {
 				virtual const char* what() const throw();
 		};
 		
-		class AFormAlreadySigned : public std::exception {
-			public :
-				virtual const char* what() const throw();
+		class FormCantSign : public std::exception {
+			public:
+				FormCantSign(const std::string& bureaucrat, const std::string& form, const std::string& reason) throw() : 
+					_bureaucrat(bureaucrat), _form(form),  _reason(reason) {}
+				~FormCantSign() throw() {}
+				virtual const char* what() const throw() ;
+
+			private:
+				std::string _bureaucrat;
+				std::string _form;
+				std::string _reason;
 		};
 
-		class FormNotSigned : public std::exception {
-			public :
-				virtual const char* what() const throw();
+		class FormCantExec : public std::exception {
+			public:
+				FormCantExec(const std::string& bureaucrat, const std::string& form, const std::string& reason) throw() : 
+					_bureaucrat(bureaucrat), _form(form),  _reason(reason) {}
+				~FormCantExec() throw() {}
+				virtual const char* what() const throw() ;
+
+			private:
+				std::string _bureaucrat;
+				std::string _form;
+				std::string _reason;
 		};
 		
     protected :

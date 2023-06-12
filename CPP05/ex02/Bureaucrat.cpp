@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:56:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/08 18:02:34 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 16:00:55 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include <iostream>
 #include <exception>
 
-Bureaucrat::Bureaucrat(void) : _name("intern"), _grade(150) {
+Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(150) {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(unsigned int grade) : _name("intern"), _grade(grade) {
+Bureaucrat::Bureaucrat(unsigned int grade) : _name("Default"), _grade(grade) {
 	check_grade(grade);
 	std::cout << "Bureaucrat grade parametric constructor called" << std::endl;
 }
@@ -84,17 +84,11 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat const &src) {
 }
 
 void	Bureaucrat::signForm(AForm &form) const {
-	form.checkSigning(this->getGrade());
-	if (form.isSigned())
-		throw AForm::AFormAlreadySigned();
 	form.beSigned(*this);
 	std::cout << this->_name << " signed " << form.getName() << std::endl;
 }
 
 void	Bureaucrat::executeForm(AForm &form) const {
-	form.checkSigning(this->getGrade());
-	if (!form.isSigned())
-		throw AForm::FormNotSigned();
 	form.execute(*this);
 	std::cout << this->_name << " executed " << form.getName() << std::endl;
 }

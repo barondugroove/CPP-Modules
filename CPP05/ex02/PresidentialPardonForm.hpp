@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:09:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/08 18:09:24 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 17:23:03 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class PresidentialPardonForm : public AForm {
     public :
 		PresidentialPardonForm(std::string target);
         PresidentialPardonForm(PresidentialPardonForm const &rhs);
-        PresidentialPardonForm(AForm const &src);
         ~PresidentialPardonForm();
 
 		PresidentialPardonForm &operator=(PresidentialPardonForm const &rhs);

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:07:40 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/08 18:13:20 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 17:46:47 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ AForm::AForm(std::string name, unsigned int sign, unsigned int exec) : _name(nam
 AForm::AForm(unsigned int sign, unsigned int exec) : _signGrade(sign), _execGrade(exec) {
     checkGrade(sign);
 	checkGrade(exec);
-	std::cout << "Form name constructor called." << std::endl;
+	std::cout << "AForm name constructor called." << std::endl;
     this->_signed = 0;
 }
 
 AForm::AForm(AForm const &rhs) : _name(rhs._name), _signGrade(rhs._signGrade), _execGrade(rhs._execGrade) {
-    std::cout << "Form copy constructor called." << std::endl;
+    std::cout << "AForm copy constructor called." << std::endl;
     *this = rhs;
 }
 
@@ -50,7 +50,6 @@ AForm& AForm::operator=(AForm const &rhs) {
 	}
 	return (*this);
 }
-
 
 std::string const AForm::getName(void) const {
 	return this->_name;
@@ -75,13 +74,20 @@ void AForm::checkGrade(unsigned int grade) const {
 		throw AForm::GradeTooLowException();
 }
 
-void AForm::checkSigning(unsigned int grade) const {
-	if (this->getSignGrade() < grade)
-		throw AForm::GradeTooLowException();
+void AForm::checkSigning(Bureaucrat const &signee) const {
+	if (this->getSignGrade() < signee.getGrade())
+		throw AForm::FormCantSign(signee.getName(), this->getName(), "bureaucrat's grade too low.");
+}
+
+void AForm::checkExec(Bureaucrat const &signee) const {
+	if (this->getExecGrade() < signee.getGrade())
+		throw AForm::FormCantExec(signee.getName(), this->getName(), "bureaucrat's grade too low.");
 }
 
 void AForm::beSigned(Bureaucrat const &signee) {
-	checkGrade(signee.getGrade());
+	checkSigning(signee);
+	if (this->isSigned())
+		throw AForm::FormCantSign(signee.getName(), this->getName(), "form is already signed.");
 	this->_signed = 1;
 }
 
@@ -93,12 +99,14 @@ const char* AForm::GradeTooLowException::what() const throw() {
 	return ("Grade is too low.");
 }
 
-const char* AForm::AFormAlreadySigned::what() const throw() {
-	return ("Form is already signed");
+const char* AForm::FormCantSign::what() const throw() {
+	std::cout << this->_bureaucrat << " couldn't sign " << this->_form << " because ";
+	return (_reason.c_str());
 }
 
-const char* AForm::FormNotSigned::what() const throw() {
-	return ("Form is not signed");
+const char* AForm::FormCantExec::what() const throw() {
+	std::cout << this->_bureaucrat << " couldn't execute " << this->_form << " because ";
+	return (_reason.c_str());
 }
 
 std::ostream & operator<<(std::ostream &o, AForm const &src) {

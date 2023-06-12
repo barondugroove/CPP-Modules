@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:11:39 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/08 18:31:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 16:02:26 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <iostream>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 25, 5) {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137) {
     std::cout << "Shrubbery creation form default constructor called." << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation Form", 25, 5), target(target) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation Form", 145, 137), target(target) {
     std::cout << "Shrubbery creation form target constructor called." << std::endl;
 }
 
@@ -40,13 +40,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-	this->checkSigning(executor.getGrade());
 	if (!this->isSigned())
-		throw AForm::FormNotSigned();
+		throw AForm::FormCantExec(executor.getName(), this->getName(), "form is not signed.");
+	this->checkExec(executor);
+	
 	std::ofstream	outfile;
-	std::string		filename;
-	filename.append(target);
-	filename.append("_shrubbery");
+	std::string		filename = target + "_shrubbery";
 	outfile.open(filename.c_str());
 	outfile << "tree tree tree \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	outfile << "    *	    	*		\n";
@@ -58,7 +57,3 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	outfile << "/..o....\\ /..o.....\\	\n";
 	outfile << "^^^[_]^^^  ^^^[_]^^^	\n";
 }
-
-
-
-

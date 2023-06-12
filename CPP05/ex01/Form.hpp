@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 13:57:34 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/07 17:32:45 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 14:50:23 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,40 @@ class Form {
 
 		Form &operator=(Form const &rhs);
 
-		class GradeTooHighException : std::exception {
+		class GradeTooHighException : public std::exception {
 			public :
 				virtual const char* what() const throw();
 		};
 
-		class GradeTooLowException : std::exception {
+		class GradeTooLowException : public std::exception {
 			public :
 				virtual const char* what() const throw();
 		};
 		
-		class FormAlreadySigned : std::exception {
-			public :
-				virtual const char* what() const throw();
+		class FormCantSign : public std::exception {
+			public:
+				FormCantSign(const std::string& bureaucrat, const std::string& form, const std::string& reason) throw() : 
+					_bureaucrat(bureaucrat), _form(form),  _reason(reason) {}
+				~FormCantSign() throw() {}
+				virtual const char* what() const throw() ;
+
+			private:
+				std::string _bureaucrat;
+				std::string _form;
+				std::string _reason;
 		};
 
-		std::string const	getName(void) const;
+		const std::string	getName(void) const;
 		unsigned int		getSignGrade(void) const;
 		unsigned int		getExecGrade(void) const;
 		bool				isSigned(void) const;
 		void				beSigned(Bureaucrat const &signee);
-		void				checkSigning(unsigned int grade) const;
+		void				checkSigning(Bureaucrat const &signee) const;
 		void				checkGrade(unsigned int grade) const;
 		
 
     private :
-        std::string const   _name;
+        const std::string   _name;
         bool				_signed;
         unsigned int const	_signGrade;
 		unsigned int const	_execGrade;

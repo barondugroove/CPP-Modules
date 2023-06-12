@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:11:39 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/09 16:27:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 15:54:00 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <cstdlib> 
 #include <iostream>
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request Form", 72, 45) {
     std::cout << "Robotomy request form default constructor called." << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), target(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy Request Form", 72, 45), target(target) {
     std::cout << "Robotomy request form target constructor called." << std::endl;
 }
 
@@ -39,9 +39,10 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-	this->checkSigning(executor.getGrade());
 	if (!this->isSigned())
-		throw AForm::FormNotSigned();
+		throw AForm::FormCantExec(executor.getName(), this->getName(), "form is not signed.");
+	this->checkExec(executor);
+	
 	std::cout << "rizzz rizzz rizzz rizzz rrrrrrrrrrrrr" << std::endl;
 	if (rand() % 2 == 0)
 		std::cout << "Lobotomization successful." << std::endl;

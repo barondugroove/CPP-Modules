@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:56:03 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/06 18:22:50 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 11:19:18 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include <iostream>
 #include <exception>
 
-Bureaucrat::Bureaucrat(void) : _name("intern"), _grade(150) {
+Bureaucrat::Bureaucrat(void) : _name("default"), _grade(150) {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(unsigned int grade) : _name("intern"), _grade(grade) {
+Bureaucrat::Bureaucrat(unsigned int grade) : _name("default"), _grade(grade) {
 	check_grade(grade);
 	std::cout << "Bureaucrat grade parametric constructor called" << std::endl;
 }
@@ -44,7 +44,7 @@ Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs) {
 	return (*this);
 }
 
-std::string const Bureaucrat::getName(void) const {
+const std::string Bureaucrat::getName(void) const {
 	return (this->_name);
 }
 
@@ -54,9 +54,9 @@ unsigned int Bureaucrat::getGrade(void) const {
 
 void Bureaucrat::check_grade(int grade) const {
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 void Bureaucrat::incrementGrade(void) {

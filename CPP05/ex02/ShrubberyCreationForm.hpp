@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:09:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/08 18:09:48 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 17:23:13 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class ShrubberyCreationForm : public AForm {
     public :
 		ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(ShrubberyCreationForm const &rhs);
-        ShrubberyCreationForm(AForm const &src);
         ~ShrubberyCreationForm();
 
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &rhs);

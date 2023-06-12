@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:07:40 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/07 17:31:28 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 14:52:57 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,16 @@ Form& Form::operator=(Form const &rhs) {
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-	return ("Grade is too high.");
+	return ("Form grade is too high.");
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return ("Grade is too low.");
+	return ("Form grade is too low.");
 }
 
-const char* Form::FormAlreadySigned::what() const throw() {
-	return ("Form is already signed");
+const char* Form::FormCantSign::what() const throw() {
+	std::cout << this->_bureaucrat << " couldn't sign " << this->_form << " because ";
+	return (_reason.c_str());
 }
 
 std::ostream & operator<<(std::ostream &o, Form const &src) {
@@ -94,17 +95,19 @@ bool Form::isSigned(void) const {
 
 void Form::checkGrade(unsigned int grade) const {
 	if (grade < 1)
-		throw GradeTooHighException();
+		throw Form::GradeTooHighException();
 	if (grade > 150)
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
 
-void Form::checkSigning(unsigned int grade) const {
-	if (this->getSignGrade() < grade)
-		throw GradeTooLowException();
+void Form::checkSigning(Bureaucrat const &signee) const {
+	if (this->getSignGrade() < signee.getGrade())
+		throw Form::FormCantSign(signee.getName(), this->getName(), "bureaucrat's grade too low.");
 }
 
 void Form::beSigned(Bureaucrat const &signee) {
-	checkGrade(signee.getGrade());
+	checkSigning(signee);
+	if (this->isSigned())
+		throw Form::FormCantSign(signee.getName(), this->getName(), "form is already signed.");
 	this->_signed = 1;
 }

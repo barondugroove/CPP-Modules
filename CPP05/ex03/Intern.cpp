@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:16:52 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/09 16:48:47 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/12 18:22:19 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Intern::~Intern() {
 	std::cout << "Intern destructor called" << std::endl;
 }
 
-const char* Intern::NoContract::watch() const throw() {
+const char* Intern::BadContractTemplate::what() const throw() {
 	return ("Name provided does not match any contract template.");
 }
 
@@ -52,7 +52,7 @@ AForm* formFactory(int idx, std::string const & target) {
 				return (new ShrubberyCreationForm(target));
 				break;
 			default:
-				throw Intern::NoContract();
+				return NULL;
 				break;
 		}
 }
@@ -64,6 +64,8 @@ AForm* Intern::makeForm(std::string const & name, std::string const & target) {
 	for (int i = 0; i < 3; i++)
 		if (!name.compare(formName[i]))
 			newForm = formFactory(i, target);
+	if (!newForm)
+		throw Intern::BadContractTemplate();
 	std::cout << "Interm creates " << name << " form." << std::endl;
 	return newForm;
 }
