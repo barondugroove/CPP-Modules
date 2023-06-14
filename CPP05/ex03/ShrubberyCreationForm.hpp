@@ -6,12 +6,12 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:09:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/12 17:22:57 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/14 13:55:47 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBERRYCREATIONFORM_CPP
-# define SHRUBERRYCREATIONFORM_CPP
+#ifndef SHRUBERRYCREATIONFORM_HPP
+# define SHRUBERRYCREATIONFORM_HPP
 
 #include "AForm.hpp"
 

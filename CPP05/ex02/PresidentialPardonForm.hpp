@@ -6,12 +6,12 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 14:09:55 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/12 17:23:03 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/14 13:55:16 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_CPP
-# define PRESIDENTIALPARDONFORM_CPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
 

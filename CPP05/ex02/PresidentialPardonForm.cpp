@@ -13,11 +13,11 @@
 #include "PresidentialPardonForm.hpp"
 #include <iostream>
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon Form", 145, 137) {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon Form", 25, 5) {
     std::cout << "Presidential pardon form default constructor called." << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential Pardon Form", 145, 137), target(target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential Pardon Form", 25, 5), target(target) {
     std::cout << "Presidential pardon form target constructor called." << std::endl;
 }
 

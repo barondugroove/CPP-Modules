@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:16:52 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/12 18:22:19 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:37:05 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ AForm* Intern::makeForm(std::string const & name, std::string const & target) {
 			newForm = formFactory(i, target);
 	if (!newForm)
 		throw Intern::BadContractTemplate();
-	std::cout << "Interm creates " << name << " form." << std::endl;
+	std::cout << "Intern creates " << name << " form." << std::endl;
 	return newForm;
 }

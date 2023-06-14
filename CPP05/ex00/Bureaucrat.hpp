@@ -6,12 +6,12 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:56:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/12 11:15:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:37:42 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_CPP
-# define BUREAUCRAT_CPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <string>
 #include <stdexcept>
