@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:26:56 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/28 14:38:00 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/28 18:42:44 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 
-#include <string>
-
-class ScalarConverter {
+class Base {
 	public :
-		static void convert(const std::string &to_convert);
-	
-	private :
-		ScalarConverter(void);
-		ScalarConverter(ScalarConverter const &src);
-		~ScalarConverter(void);
-		
-		ScalarConverter &operator=(ScalarConverter const &rhs);
+		virtual ~Base(void);
 };
 
 #endif

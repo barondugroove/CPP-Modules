@@ -1,30 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   A.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 15:26:56 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/28 14:38:00 by bchabot          ###   ########.fr       */
+/*   Created: 2023/06/19 15:30:29 by bchabot           #+#    #+#             */
+/*   Updated: 2023/06/28 18:42:17 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#include "A.hpp"
 
-#include <string>
-
-class ScalarConverter {
-	public :
-		static void convert(const std::string &to_convert);
-	
-	private :
-		ScalarConverter(void);
-		ScalarConverter(ScalarConverter const &src);
-		~ScalarConverter(void);
-		
-		ScalarConverter &operator=(ScalarConverter const &rhs);
-};
-
-#endif
+A::~A(void) {
+	return ;
+}

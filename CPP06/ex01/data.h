@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 15:26:56 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/28 14:38:00 by bchabot          ###   ########.fr       */
+/*   Created: 2023/06/28 14:40:07 by bchabot           #+#    #+#             */
+/*   Updated: 2023/06/28 17:05:15 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
-
+#include "Serializer.hpp"
 #include <string>
+#include <iostream>
 
-class ScalarConverter {
-	public :
-		static void convert(const std::string &to_convert);
-	
-	private :
-		ScalarConverter(void);
-		ScalarConverter(ScalarConverter const &src);
-		~ScalarConverter(void);
-		
-		ScalarConverter &operator=(ScalarConverter const &rhs);
+struct Data {
+	int integer;
+	std::string string;
+	float flt;
+	double dbl;
 };
-
-#endif

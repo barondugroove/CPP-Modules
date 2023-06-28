@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:30:29 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/27 18:27:56 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/06/28 14:31:19 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void convertDouble(double nbr) {
 		std::cout << "char: '" << static_cast<char>(nbr) << "'" << std::endl;
 	else
 		std::cout << "char: non displayable" << std::endl;
-	
-	if (nbr <= INT_MAX)
+
+	if (nbr <= INT_MAX && nbr >= INT_MIN)
 		std::cout << "int: " << static_cast<int>(nbr) << std::endl;
 	else
 		std::cout << "int: overflow" << std::endl;
@@ -90,10 +90,10 @@ void convertDouble(double nbr) {
 void convertFloat(const float &nbr, const double &d) {
 	if (nbr >= 32 && nbr <= 126)
 		std::cout << "char: '" << static_cast<char>(nbr) << "'" << std::endl;
-	else
+	else	
 		std::cout << "char: non displayable" << std::endl;
 	
-	if (d <= INT_MAX)
+	if (d <= INT_MAX && d >= INT_MIN)
 		std::cout << "int: " << static_cast<int>(nbr) << std::endl;
 	else
 		std::cout << "int: overflow" << std::endl;
@@ -103,8 +103,8 @@ void convertFloat(const float &nbr, const double &d) {
 		std::cout << "double: " << static_cast<double>(nbr) << std::endl;
 	}
 	else {
-		std::cout << "float: " << nbr << ".0f" << std::endl;
-		std::cout << "double: " << static_cast<double>(nbr) << ".0" << std::endl;	
+		std::cout << "float: " << nbr << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(nbr) << std::endl;	
 	}
 }
 
@@ -128,7 +128,7 @@ void identify(const std::string &to_convert) {
 }
 
 void ScalarConverter::convert(const std::string &to_convert) {
-	if (to_convert.length() == 1 && (!isdigit(to_convert[0]) || (to_convert[0] >= '0' && to_convert[0] <= '9'))) {
+	if (to_convert.length() == 1 && !isdigit(to_convert[0])) {
 		std::cout << "char: " << to_convert[0] << std::endl;
 		std::cout << "int: " << static_cast<int>(to_convert[0]) << std::endl;
 		std::cout << "float: " << static_cast<float>(to_convert[0]) << ".0f" << std::endl;
