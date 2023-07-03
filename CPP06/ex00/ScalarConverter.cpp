@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:30:29 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/03 14:08:35 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/03 14:21:26 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void identify(const std::string &to_convert) {
 		printNan();
 		return ;
 	}
-	if (to_convert.find(".") != std::string::npos && (*ptr == 'f' && *(ptr + 1) == '\0') && !isInf(to_convert))
+	if ((*ptr == 'f' && *(ptr + 1) == '\0') && !isInf(to_convert))
 		convertFloat(to_convert, d);
 	else if (to_convert.find(".") == std::string::npos && *ptr == '\0' && !isInf(to_convert))
 		convertInt(to_convert, d);
