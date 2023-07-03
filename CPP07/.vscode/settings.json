@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"array.hpp": "c"
+		"array.hpp": "c",
+		"*.tpp": "cpp",
+		"ostream": "cpp"
 	}
 }

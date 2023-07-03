@@ -6,17 +6,42 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:47:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/30 17:43:04 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/03 18:22:00 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
+#include <exception>
+
 template<typename T>
 class Array {
 	public :
-		Array();
+		Array<T>();
+		Array<T>(unsigned int n);
+		Array<T>(const Array<T> &src);
+		~Array<T>();
+
+		Array<T>& operator=(const Array<T> &rhs);
+		T& operator[](const unsigned int &index) const;
+
+		class IndexErrorException : public std::exception {
+			public :
+				virtual const char* what() const throw();
+		};
+
+		class NoContentErrorException : public std::exception {
+			public :
+				virtual const char* what() const throw();
+		};
+
+		unsigned int	size() const;
+		void			fillArray(T content, unsigned int index);
+
+	protected :
+		T*				_array;
+		unsigned int	_size;
 };
 
 #endif
