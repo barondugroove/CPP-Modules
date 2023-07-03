@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:33:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/06/28 18:48:47 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/03 14:14:23 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int main(void) {
 	Base *base = generate();
 	Base &base2 = *base;
 	Base *bases[5];
+	identify(base);
+	identify(base2);
 	for (int i = 0; i < 5; i++)
 	{
 		bases[i] = generate();
@@ -89,8 +91,6 @@ int main(void) {
 		identify(*bases[i]);
 		delete bases[i];
 	}
-	identify(base);
-	identify(base2);
 	delete (base);
 	return 0;
 }
