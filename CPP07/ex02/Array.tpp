@@ -6,13 +6,14 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:47:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/03 18:45:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/04 18:56:51 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 #include <iostream>
 #include <cstddef>
+#include <climits>
 
 template<typename T>
 Array<T>::Array() : _array(NULL) {
@@ -21,12 +22,15 @@ Array<T>::Array() : _array(NULL) {
 
 template<typename T>
 Array<T>::Array(unsigned int n) {
-	_array = new T[n];
+	if (n < 0 || n > INT_MAX)
+		throw Array<T>::IndexConstructorException();
+	_array = new T[n]();
 	_size = n;
 }
 
 template<typename T>
 Array<T>::~Array() {
+	delete [] _array;
 }
 
 template<typename T>
@@ -37,12 +41,15 @@ Array<T>::Array(const Array<T> &src) {
 template<typename T>
 Array<T>& Array<T>::operator=(const Array<T> &rhs) {
 	if (this != &rhs) {
-		delete this->_array;
+		this->_size = rhs.size();
 		if (rhs._array == NULL)
+		{	
+			delete [] _array;
 			this->_array = NULL;
-		unsigned int nbr = rhs.size();
-		this->_array = new T[nbr];
-		for (unsigned int i = 0; i < nbr; i++)
+			return *this;
+		}
+		this->_array = new T[rhs.size()]();
+		for (unsigned int i = 0; i < rhs._size; i++)
 			this->_array[i] = rhs._array[i];
 	}
 	return (*this);
@@ -50,18 +57,19 @@ Array<T>& Array<T>::operator=(const Array<T> &rhs) {
 
 template<typename T>
 T& Array<T>::operator[](const unsigned int &index) const {
-	if (!this->_array[index])
-		std::cout << "Bad index." << std::endl;
+	if (_array == NULL || index >= _size)
+		throw Array<T>::IndexErrorException();
+	return (this->_array[index]);
 }
 
 template<typename T>
 const char* Array<T>::IndexErrorException::what() const throw() {
-	return ("This index does not exist.");
+	return ("Index provided is not in array's size range.");
 }
 
 template<typename T>
-const char* Array<T>::NoContentErrorException::what() const throw() {
-	return ("No content at the index provided.");
+const char* Array<T>::IndexConstructorException::what() const throw() {
+	return ("Cannot create array class cause size provided is erroneous.");
 }
 
 template<typename T>
@@ -71,10 +79,8 @@ unsigned int Array<T>::size() const {
 
 template<typename T>
 void Array<T>::fillArray(T content, unsigned int index) {
-	if (!_array || index >= _size)
-		throw IndexErrorException();
-	if (_array[index] == 5)
-		throw NoContentErrorException();
+	if (_array == NULL || index >= _size || index > INT_MAX)
+		throw Array<T>::IndexErrorException();
 	_array[index] = content; 
 }
 

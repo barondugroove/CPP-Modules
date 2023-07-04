@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:47:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/03 18:22:00 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/04 18:55:02 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Array {
 				virtual const char* what() const throw();
 		};
 
-		class NoContentErrorException : public std::exception {
+		class IndexConstructorException : public std::exception {
 			public :
 				virtual const char* what() const throw();
 		};
@@ -39,7 +39,7 @@ class Array {
 		unsigned int	size() const;
 		void			fillArray(T content, unsigned int index);
 
-	protected :
+	private :
 		T*				_array;
 		unsigned int	_size;
 };
