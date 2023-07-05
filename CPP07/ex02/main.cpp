@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:33:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/04 18:56:31 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/05 14:14:32 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int main(void) {
 	}
 	try {
 		std::cout << std::endl << "________BAD INDEX CREATE ARRAY<T>________" << std::endl;
-		Array<double> d(-1);
+		Array<int> d(-1);
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;

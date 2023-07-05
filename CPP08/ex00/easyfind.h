@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.h                                             :+:      :+:    :+:   */
+/*   easyfind.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 16:32:23 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/05 14:12:15 by bchabot          ###   ########.fr       */
+/*   Created: 2023/07/05 14:35:18 by bchabot           #+#    #+#             */
+/*   Updated: 2023/07/05 15:11:25 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <algorithm>
+#include <vector>
+#include <list>
+#include <exception>
 #include <iostream>
 
-template<typename T>
-void f(T const &content) {
-	std::cout << content << std::endl;
-}
+class NotElementFound : public std::exception {
+	public :
+		virtual const char* what() const throw() {
+			return ("Element not found.");
+		};
+};
 
 template<typename T>
-void iter(T tab[], int size, void (*f)(T const &content)) {
-	for (int i = 0; i < size; i++)
-		(*f)(tab[i]);
+void easyfind(T const &content, int const nbr) {
+	if (std::find(content.begin(), content.end(), nbr) == content.end())
+		throw NotElementFound();
+	std::cout << "Element " << nbr << " found." << std::endl;
 }

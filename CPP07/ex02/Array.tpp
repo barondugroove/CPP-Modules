@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:47:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/04 18:56:51 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/05 14:13:27 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ template<typename T>
 Array<T>& Array<T>::operator=(const Array<T> &rhs) {
 	if (this != &rhs) {
 		this->_size = rhs.size();
+		delete [] _array;
 		if (rhs._array == NULL)
-		{	
-			delete [] _array;
+		{
 			this->_array = NULL;
 			return *this;
 		}
