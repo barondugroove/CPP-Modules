@@ -6,18 +6,18 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:01:48 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/05 13:56:36 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/06 11:05:56 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template<typename T>
 T const &max(T const &x, T const &y) {
-	return (x >= y ? x : y);
+	return (x > y ? x : y);
 }
 
 template<typename T>
 T const &min(T const &x, T const &y) {
-	return (x <= y ? x : y);
+	return (x < y ? x : y);
 }
 
 template<typename T>

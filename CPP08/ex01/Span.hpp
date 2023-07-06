@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.h                                         :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 14:35:18 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/06 11:22:38 by bchabot          ###   ########.fr       */
+/*   Created: 2023/07/06 11:29:47 by bchabot           #+#    #+#             */
+/*   Updated: 2023/07/06 13:12:41 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <algorithm>
-#include <vector>
-#include <list>
-#include <exception>
-#include <iostream>
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
-class NotElementFound : public std::exception {
+#include <string>
+#include <vector>
+#include <algorithm>
+
+class Span {
 	public :
-		virtual const char* what() const throw() {
-			return ("Element not found.");
-		};
+		Span();
+		Span(unsigned int N);
+		Span(const Span &src);
+		~Span();
+		
+		Span& operator=(const Span &rhs);
+
+		void	addNumber(int nbr);
+		template <typename T>
+		void	addNumbers(T iterBeging, T iterEnd);
+		int		shortestSpan();
+		int		longestSpan();
+
+	private :
+		std::vector<int>	_array;
+		unsigned int		_size;
 };
 
-template<typename T>
-void easyfind(T const &content, int const nbr) {
-	if (std::find(content.begin(), content.end(), nbr) == content.end())
-		throw NotElementFound();
-	std::cout << "Element " << nbr << " found." << std::endl;
-}
+#endif

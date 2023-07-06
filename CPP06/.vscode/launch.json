@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/benjaminchabot/Documents/Hackerman/42/CPP-Modules/CPP06",
+      "program": "/Users/benjaminchabot/Documents/Hackerman/42/CPP-Modules/CPP06/build/Debug/outDebug"
+    }
+  ]
+}

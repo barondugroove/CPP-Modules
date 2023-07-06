@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:32:23 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/05 14:12:15 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/06 11:12:14 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@ void f(T const &content) {
 }
 
 template<typename T>
-void iter(T tab[], int size, void (*f)(T const &content)) {
+void iter(T *tab, int size, void (*f)(T &content)) {
+	for (int i = 0; i < size; i++)
+		(*f)(tab[i]);
+}
+
+template<typename T>
+void iter(T *tab, int size, void (*f)(T const &content)) {
 	for (int i = 0; i < size; i++)
 		(*f)(tab[i]);
 }
