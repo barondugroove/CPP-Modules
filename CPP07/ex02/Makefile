@@ -6,13 +6,13 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/07/03 15:39:04 by bchabot          ###   ########.fr        #
+#    Updated: 2023/07/10 15:05:18 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex02
 
-SRCS =	main.cpp
+SRCS =	main42.cpp
 
 CC = c++
 

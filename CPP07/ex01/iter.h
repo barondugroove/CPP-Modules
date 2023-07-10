@@ -6,14 +6,14 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:32:23 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/06 11:12:14 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/10 14:46:12 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 template<typename T>
-void f(T const &content) {
+void f(T &content) {
 	std::cout << content << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:47:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/06 11:19:51 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/10 15:17:51 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Array<T>::Array(unsigned int n) {
 
 template<typename T>
 Array<T>::~Array() {
-	delete [] _array;
+	delete[] _array;
 }
 
 template<typename T>
@@ -41,9 +41,10 @@ Array<T>::Array(const Array<T> &src) {
 template<typename T>
 Array<T>& Array<T>::operator=(const Array<T> &rhs) {
 	if (this != &rhs) {
+		std::cout << "JE SUIS LA APRES " << this->_size << std::endl;
+		delete[] _array;
+		_array = NULL;
 		this->_size = rhs.size();
-		//if (this->_array)
-			delete [] _array;
 		if (rhs._array == NULL)
 		{
 			this->_array = NULL;
