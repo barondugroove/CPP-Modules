@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:29:47 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/06 13:12:41 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/11 14:59:17 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Span {
 
 		void	addNumber(int nbr);
 		template <typename T>
-		void	addNumbers(T iterBeging, T iterEnd);
+		void	addMultipleNumbers(T iterBeging, T iterEnd);
 		int		shortestSpan();
 		int		longestSpan();
 

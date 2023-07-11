@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 15:33:19 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/10 14:59:04 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/11 12:59:35 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 int main(void) {
 	Array<int> b(5);
-	Array<int> a;
 	Array<float> c(15);
 	try {
 		std::cout << "________TEST ALL GOOD________" << std::endl;
@@ -31,7 +30,7 @@ int main(void) {
 	}
 	try {
 		std::cout << std::endl << "________TEST COPY________" << std::endl;
-		a = b;
+		Array<int> a = b;
 		std::cout << "size of a is " << a.size() << std::endl;
 		std::cout << "a[0] before fill is " << a[0] << std::endl;
 		a.fillArray(55, 0);

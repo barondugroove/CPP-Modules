@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:35:28 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/06 13:43:24 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/11 14:59:15 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,26 @@ Span& Span::operator=(const Span &rhs) {
 }
 
 template<typename T>
-void Span::addNumbers(T iterBegin, T iterEnd) {
+void Span::addMultipleNumbers(T iterBegin, T iterEnd) {
 	T	iterCpy = iterBegin;
 	for (; iterCpy != iterEnd; iterCpy++) {
 		if (_array.size() == _size)
 			break ;
-		this->insert(iterBegin, iterCpy, iterEnd);
+		_array.insert(iterBegin, iterCpy, iterEnd);
 	}
 
 }
 
 void Span::addNumber(int nbr) {
 	if (_array.size() == _size)
-		std::cout << "PLEIN PLEIN" << std::endl;
+		std::cout << "ADD FULL SECURITY" << std::endl;
 	else
 		_array.push_back(nbr);
 }
 
 int Span::shortestSpan() {
 	if (_array.size() <= 1)
-		std::cout << "PETIT PETIT" << std::endl;
+		std::cout << "ADD SIZE SECURITY" << std::endl;
 	std::sort(_array.begin(), _array.end());
 	int	shortSpan = _array[1] - _array[0];
 	for (int i = 1; i < (int)_size - 1; i++)
@@ -69,7 +69,7 @@ int Span::shortestSpan() {
 
 int Span::longestSpan() {
 	if (_array.size() <= 1)
-		std::cout << "PETIT PETIT" << std::endl;
+		std::cout << "ADD SIZE SECURITY" << std::endl;
 	std::sort(_array.begin(), _array.end());
 	int	longSpan = _array.back() - _array.front();
 	return longSpan;
