@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:29:47 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/11 14:59:17 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/12 12:00:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <list>
+#include <exception>
 
 class Span {
 	public :
@@ -27,10 +29,19 @@ class Span {
 		Span& operator=(const Span &rhs);
 
 		void	addNumber(int nbr);
-		template <typename T>
-		void	addMultipleNumbers(T iterBeging, T iterEnd);
+		void	addMultipleNumbers(std::list<int>::iterator iterBegin, std::list<int>::iterator iterEnd);
 		int		shortestSpan();
 		int		longestSpan();
+
+		class arrayFull : public std::exception {
+			public :
+				virtual const char* what() const throw();
+		};
+
+		class arrayEmpty : public std::exception {
+			public :
+				virtual const char* what() const throw();
+		};
 
 	private :
 		std::vector<int>	_array;
