@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:35:28 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/12 12:00:07 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/17 15:27:00 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ int Span::shortestSpan() {
 		throw arrayEmpty();
 	std::sort(_array.begin(), _array.end());
 	int	shortSpan = _array[1] - _array[0];
-	for (int i = 1; i < (int)_size - 1; i++)
+	for (int i = 1; i < (int)_size - 1; i++) {
 		if (_array[i + 1] - _array[i] < shortSpan)
 			shortSpan = _array[i + 1] - _array[i];
+	}
 	return shortSpan;
 }
 
@@ -70,9 +71,9 @@ int Span::longestSpan() {
 }
 
 const char* Span::arrayFull::what() const throw() {
-	return ("Array Full");
+	return ("Can't add value to array cause it is full.");
 }
 
 const char* Span::arrayEmpty::what() const throw() {
-	return ("Array Empty");
+	return ("Can't calculate value cause array is empty or contains only one element.");
 }

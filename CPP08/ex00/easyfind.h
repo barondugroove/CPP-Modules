@@ -6,13 +6,11 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 14:35:18 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/06 11:22:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/17 12:10:02 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <algorithm>
-#include <vector>
-#include <list>
 #include <exception>
 #include <iostream>
 

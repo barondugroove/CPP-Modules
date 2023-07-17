@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:16:33 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/13 18:04:50 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/17 15:39:59 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main()
 		std::cout << mstack.top() << std::endl;
 		mstack.pop();
 		std::cout << "mstack size is : ";
-		std::cout << mstack.size() << std::endl;
+		std::cout << mstack.size() << std::endl << std::endl;
 		mstack.push(3);
 		mstack.push(5);
 		mstack.push(737);
@@ -53,7 +53,7 @@ int main()
 		std::cout << mslist.front() << std::endl;
 		mslist.pop_front();
 		std::cout << "mstack size is : ";
-		std::cout << mslist.size() << std::endl;
+		std::cout << mslist.size() << std::endl << std::endl;
 		mslist.push_back(3);
 		mslist.push_back(5);
 		mslist.push_back(737);
@@ -79,7 +79,7 @@ int main()
 		std::cout << msvector.begin()->first << std::endl;
 		msvector.erase(msvector.begin());
 		std::cout << "msvector vector<pair> size is : ";
-		std::cout << msvector.size() << std::endl;
+		std::cout << msvector.size() << std::endl << std::endl;
 		msvector.push_back(std::pair<int, int>(3, 3));
 		msvector.push_back(std::pair<int, int>(5, 5));
 		msvector.push_back(std::pair<int, int>(737, 737));
@@ -107,8 +107,9 @@ int main()
 		std::cout << "mstack top is : ";
 		std::cout << mstack.begin()->first << " | " << *mstack.begin()->second.begin() << std::endl;
 		tmp.pop();
+		mstack.pop();
 		std::cout << "mstack size is : ";
-		std::cout << mstack.size() << std::endl;
+		std::cout << mstack.size() << std::endl << std::endl;
 		tmp.push(3);
 		mstack.push(std::pair<int, MutantStack<int> >(3, tmp));
 		tmp.push(5);
