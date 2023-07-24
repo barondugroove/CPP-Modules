@@ -6,13 +6,14 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/07/16 15:56:11 by bchabot          ###   ########.fr        #
+#    Updated: 2023/07/24 19:09:56 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
 
-SRCS =	main.cpp
+SRCS =	main.cpp \
+		BitcoinExchange.cpp
 
 CC = c++
 
