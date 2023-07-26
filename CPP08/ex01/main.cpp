@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:50:31 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/17 15:26:59 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/26 15:18:37 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main()
 		Span sp2 = Span(10000);
 		std::list<int> myList = createList(10000);
 		std::list<int>::iterator ptr = myList.begin();
-		
+
 		sp2.addMultipleNumbers(ptr, myList.end());
 		std::cout << "Shortest span is : " << sp2.shortestSpan() << std::endl;
 		std::cout << "Longest span is : " << sp2.longestSpan() << std::endl;

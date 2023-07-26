@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:16:33 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/17 15:39:59 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/26 15:27:06 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main()
 	{
 		std::cout << "_____ TESTS WITH MUTANT STACK _____" << std::endl;
 		MutantStack<int> mstack;
+
 		mstack.push(5);
 		mstack.push(17);
 		std::cout << "mstack top is : ";
@@ -31,7 +32,6 @@ int main()
 		mstack.push(3);
 		mstack.push(5);
 		mstack.push(737);
-		//[...]
 		mstack.push(0);
 		MutantStack<int>::iterator it = mstack.begin();
 		MutantStack<int>::iterator ite = mstack.end();
@@ -47,6 +47,7 @@ int main()
 	{
 		std::cout << "_____ TESTS WITH LIST _____" << std::endl;
 		std::list<int> mslist;
+
 		mslist.push_front(5);
 		mslist.push_front(17);
 		std::cout << "mstack list is : ";
@@ -57,7 +58,6 @@ int main()
 		mslist.push_back(3);
 		mslist.push_back(5);
 		mslist.push_back(737);
-		//[...]
 		mslist.push_back(0);
 		std::list<int>::iterator it = mslist.begin();
 		std::list<int>::iterator ite = mslist.end();
@@ -73,6 +73,7 @@ int main()
 	{
 		std::cout << "_____ TESTS WITH SUBIELO _____" << std::endl;
 		std::vector<std::pair<int, int> > msvector;
+
 		msvector.insert(msvector.begin(), std::pair<int, int>(5, 5));
 		msvector.insert(msvector.begin(), std::pair<int, int>(17, 17));
 		std::cout << "msvector vector<pair> is : ";
@@ -83,7 +84,6 @@ int main()
 		msvector.push_back(std::pair<int, int>(3, 3));
 		msvector.push_back(std::pair<int, int>(5, 5));
 		msvector.push_back(std::pair<int, int>(737, 737));
-		//[...]
 		msvector.push_back(std::pair<int, int>(0, 0));
 		std::vector<std::pair<int, int> >::iterator it = msvector.begin();
 		std::vector<std::pair<int, int> >::iterator ite = msvector.end();
@@ -98,8 +98,9 @@ int main()
 	}
 	{
 		std::cout << "_____ TESTS WITH SUBIELO 2 _____" << std::endl;
-		MutantStack<std::pair<int, MutantStack<int> > > mstack;
+		<intMutantStack<std::pair, MutantStack<int> > > mstack;
 		MutantStack<int> tmp;
+
 		tmp.push(5);
 		mstack.push(std::pair<int, MutantStack<int> >(1, tmp));
 		tmp.push(17);
@@ -116,7 +117,6 @@ int main()
 		mstack.push(std::pair<int, MutantStack<int> >(4, tmp));
 		tmp.push(737);
 		mstack.push(std::pair<int, MutantStack<int> >(5, tmp));
-		//[...]
 		mstack.push(std::pair<int, MutantStack<int> >(6, tmp));
 		MutantStack<std::pair<int, MutantStack<int> > >::iterator it = mstack.begin();
 		MutantStack<std::pair<int, MutantStack<int> > >::iterator ite = mstack.end();
@@ -127,7 +127,7 @@ int main()
 			MutantStack<int>::iterator lol = it->second.begin();
 			std::cout << it->first << " | ";
 			while (lol != it->second.end())
-			{	
+			{
 				std::cout << *lol << " ";
 				lol++;
 			}

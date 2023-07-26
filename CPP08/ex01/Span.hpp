@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:29:47 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/17 12:22:32 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/26 15:18:54 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Span {
 		Span(unsigned int N);
 		Span(const Span &src);
 		~Span();
-		
+
 		Span& operator=(const Span &rhs);
 
 		void	addNumber(int nbr);

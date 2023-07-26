@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:35:28 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/17 15:27:00 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/26 15:18:57 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Span& Span::operator=(const Span &rhs) {
 		if (!_array.empty())
 			_array.clear();
 		this->_array = rhs._array;
+		this->_size = rhs._size;
 	}
 	return *this;
 }
@@ -53,7 +54,9 @@ void Span::addNumber(int nbr) {
 int Span::shortestSpan() {
 	if (_array.size() <= 1)
 		throw arrayEmpty();
+
 	std::sort(_array.begin(), _array.end());
+
 	int	shortSpan = _array[1] - _array[0];
 	for (int i = 1; i < (int)_size - 1; i++) {
 		if (_array[i + 1] - _array[i] < shortSpan)

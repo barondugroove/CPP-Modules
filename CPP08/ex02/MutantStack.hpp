@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:13:36 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/13 16:16:20 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/26 15:22:00 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class MutantStack : public std::stack<T> {
 		iterator begin() {
 			return this->c.begin();
 		}
-		
+
 		iterator end() {
 			return this->c.end();
 		}
