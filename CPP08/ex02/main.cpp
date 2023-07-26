@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:16:33 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/26 15:27:06 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/07/26 15:30:51 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int main()
 	}
 	{
 		std::cout << "_____ TESTS WITH SUBIELO 2 _____" << std::endl;
-		<intMutantStack<std::pair, MutantStack<int> > > mstack;
+		MutantStack<std::pair<int, MutantStack<int> > > mstack;
 		MutantStack<int> tmp;
 
 		tmp.push(5);

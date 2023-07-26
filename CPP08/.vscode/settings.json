@@ -72,6 +72,7 @@
 		"random": "cpp",
 		"utility": "cpp",
 		"numbers": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"span": "cpp"
 	}
 }
