@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 12:13:36 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/26 16:43:29 by bchabot          ###   ########.fr       */
+/*   Created: 2023/07/16 15:52:16 by bchabot           #+#    #+#             */
+/*   Updated: 2023/07/25 17:24:51 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MUTANTSTACK_HPP
-# define MUTANTSTACK_HPP
+#include "RPN.hpp"
 
-#include <stack>
-#include <deque>
-#include <iterator>
-
-template<typename T>
-class MutantStack : public std::stack<T> {
-	public :
-		typedef typename std::deque<T>::iterator iterator;
-
-		iterator begin() {
-			return this->c.begin();
-		}
-
-		iterator end() {
-			return this->c.end();
-		}
-};
-
-#endif
+int main(int ac, char **av)
+{
+	if (ac != 2) {
+		std::cerr << "Error." << std::endl;
+		return 1;
+	}
+	std::string str = av[1];
+	checkErrors(str);
+	rpn(str);
+	return 0;
+}

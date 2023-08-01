@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 12:13:36 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/26 16:43:29 by bchabot          ###   ########.fr       */
+/*   Created: 2023/07/16 15:52:16 by bchabot           #+#    #+#             */
+/*   Updated: 2023/08/01 00:33:59 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MUTANTSTACK_HPP
-# define MUTANTSTACK_HPP
+#include "PmergeMe.hpp"
 
-#include <stack>
-#include <deque>
-#include <iterator>
-
-template<typename T>
-class MutantStack : public std::stack<T> {
-	public :
-		typedef typename std::deque<T>::iterator iterator;
-
-		iterator begin() {
-			return this->c.begin();
-		}
-
-		iterator end() {
-			return this->c.end();
-		}
-};
-
-#endif
+int main(int ac, char **av)
+{
+	if (ac < 2) {
+		std::cout << "Error." << std::endl;
+		return 1;
+	}
+	PmergeMe s = PmergeMe(av);
+	s.FordJohnsonSort();
+	return 0;
+}

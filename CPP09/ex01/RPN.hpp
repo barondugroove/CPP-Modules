@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 12:13:36 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/26 16:43:29 by bchabot          ###   ########.fr       */
+/*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
+/*   Updated: 2023/07/25 17:30:31 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MUTANTSTACK_HPP
-# define MUTANTSTACK_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 
 #include <stack>
-#include <deque>
-#include <iterator>
+#include <string>
+#include <iostream>
 
-template<typename T>
-class MutantStack : public std::stack<T> {
-	public :
-		typedef typename std::deque<T>::iterator iterator;
-
-		iterator begin() {
-			return this->c.begin();
-		}
-
-		iterator end() {
-			return this->c.end();
-		}
-};
+void	checkErrors(std::string str);
+int		isOperator(char c);
+void	calc(std::stack<char> &calculus, int i);
+void 	rpn(std::string &str);
 
 #endif
