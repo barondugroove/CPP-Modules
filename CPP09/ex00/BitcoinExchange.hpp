@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:07:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/24 19:13:58 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/07 18:20:46 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 #include <iostream>
 #include <unistd.h>
 #include <map>
-#include <fstream>
-#include <sstream>
 
-std::ifstream checkFile(const char *fileName);
-bool isValidDate(const char* dateStr);
+bool	checkFile(const char *fileName);
+bool isValidDate(std::string &dateStr);
 bool isValidValue(std::string &value);
-void createDb(std::map<std::string, float> &db, const std::string &input, const char *separator);
+void createDb(std::map<std::string, float> &db, const std::string &input);
 void searchDb(const std::map<std::string, float> &db, const std::string &input);
 
 #endif

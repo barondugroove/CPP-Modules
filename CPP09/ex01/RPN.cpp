@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/25 17:27:30 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/07 16:54:39 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stack>
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 void checkErrors(std::string str) {
 	if (str.empty() || str.find('(', 0) != std::string::npos || str.find(')', 0) != std::string::npos

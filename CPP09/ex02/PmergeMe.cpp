@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/01 19:09:00 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/07 19:42:12 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,33 @@ void	PmergeMe::createPairs(std::vector<std::pair<int, int> > &pairVector, std::v
 		y = *(it + 1);
 		if (x > y)
 			std::swap(x, y);
-		pairVector.push_back(std::pair<int, int>(x, y));
+		pairVector.push_back(std::make_pair(x, y));
 	}
 }
 
 void	PmergeMe::sortPairs(std::vector<std::pair<int, int> > &pairVector) {
 	std::vector<std::pair<int, int> > vector1;
-	std::vector<std::pair<int, int> > vector2;
+	std::vector<std::pair<int, int> > vectorPair;
 	int	size;
 
 	size = pairVector.size();
 	if (size < 2)
 		return ;
-	for (int i = 0; i < size; i++) {
-			if (i < size / 2)
+	for (int i = 0; i < size - 1; i++) {
+			if (pairVector[i].second >= pairVector[i + 1].second)
 				vector1.push_back(pairVector[i]);
 			else
-				vector2.push_back(pairVector[i]);
+				vectorPair.push_back(pairVector[i + 1]);
 	}
 
+	vectorPair.clear();
 	sortPairs(vector1);
-	sortPairs(vector2);
+//	sortPairs(vector2);
 
-	mergePairs(pairVector, vector1, vector2);
+//	mergePairs(pairVector, vector1, vector2);
 }
 
+/*
 void PmergeMe::mergePairs(std::vector<std::pair<int, int> > &resultVector, std::vector<std::pair<int, int> > &vector1, std::vector<std::pair<int, int> > &vector2) {
 	int i = 0;
 	int j = 0;
@@ -106,6 +108,7 @@ void PmergeMe::mergePairs(std::vector<std::pair<int, int> > &resultVector, std::
 	}
 	std::cout << std::endl << std::endl;
 }
+*/
 
 void	PmergeMe::FordJohnsonSort() {
 	std::vector<std::pair<int, int> > pairVector;

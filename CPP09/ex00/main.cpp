@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/07/24 19:14:20 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/07 18:12:06 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 		return 1;
 	}
 	std::map<std::string, float> dbBitcoin;
-	createDb(dbBitcoin, "data.csv", ",");
+	createDb(dbBitcoin, "data.csv");
 	searchDb(dbBitcoin, av[1]);
 	return 0;
 }
