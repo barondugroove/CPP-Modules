@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/07 19:58:50 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/08 18:41:40 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ PmergeMe::PmergeMe(char **av) {
 		_s.push_back(atoi(*av));
 	_size = _s.size();
 	_straggler = -1;
+	if (_size % 2 != 0)
+		_straggler = _s.back();
 }
 
 PmergeMe::~PmergeMe() {
@@ -40,26 +42,45 @@ void	PmergeMe::createPairs(std::vector<std::pair<int, int> > &pairVector, std::v
 	}
 }
 
-void	PmergeMe::sortPairs(std::vector<std::pair<int, int> > &pairVector) {
-	std::vector<std::pair<int, int> > vector1;
+void	PmergeMe::sortPairs(std::vector<int> &_s) {
+	std::vector<int> vectorMax;
 	std::vector<std::pair<int, int> > vectorPair;
 	int	size;
 
-	size = pairVector.size();
+	size = _s.size();
 	if (size < 2)
 		return ;
-	for (int i = 0; i < size - 1; i++) {
-			if (pairVector[i].second >= pairVector[i + 1].second)
-				vector1.push_back(pairVector[i]);
-			else
-				vectorPair.push_back(pairVector[i + 1]);
+	for (int i = 0; i < size - 1; i += 2) {
+		if (_s[i] > _s[i + 1]) {
+			vectorMax.push_back(_s[i]);
+			vectorPair.push_back(std::make_pair(_s[i + 1], _s[i]));
+		}
+		else {
+			vectorMax.push_back(_s[i + 1]);
+			vectorPair.push_back(std::make_pair(_s[i], _s[i + 1]));
+		}
 	}
 
-	vectorPair.clear();
-	sortPairs(vector1);
-//	sortPairs(vector2);
+	sortPairs(vectorMax);
 
-//	mergePairs(pairVector, vector1, vector2);
+	int idx = 0;
+    for (int i = 0; i < size - 1; i++) {
+        _s[i] = vectorMax[idx];
+		idx++;
+    }
+
+	static int i = 0;
+	std::cout << "Passage n* " << i++ << std::endl;
+	std::cout << "VectorMax is : " << std::endl;
+	for (std::vector<int>::iterator it = vectorMax.begin(); it != vectorMax.end(); it++) {
+		std::cout << *it << " - ";
+	}
+/*	std::cout << std::endl <<  "VectorPair is : " << std::endl;
+	for (std::vector<std::pair<int, int> >::iterator it = vectorPair.begin(); it != vectorPair.end(); it++) {
+		std::cout << it->first << " - " << it->second << " | ";
+	}*/
+	std::cout << std::endl;
+
 }
 
 /*
@@ -113,16 +134,16 @@ void PmergeMe::mergePairs(std::vector<std::pair<int, int> > &resultVector, std::
 void	PmergeMe::FordJohnsonSort() {
 	std::vector<std::pair<int, int> > pairVector;
 
-	createPairs(pairVector, _s);
-	std::cout << "_straggler is : " << _straggler << std::endl;
 	std::cout << "Vector before " << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it = pairVector.begin(); it != pairVector.end(); it++) {
-		std::cout << it->first << " - " << it->second  << " / ";
+	for (std::vector<int>::iterator it = _s.begin(); it != _s.end(); it++) {
+		std::cout << *it << " ";
 	}
+	std::cout << std::endl;
+	std::cout << "_straggler is : " << _straggler << std::endl;
 	std::cout << std::endl << std::endl;
-	sortPairs(pairVector);
-	std::cout << "Vector after " << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it = pairVector.begin(); it != pairVector.end(); it++) {
-		std::cout << it->first << " - " << it->second  << " / ";
+	sortPairs(_s);
+	std::cout << std::endl << "Vector after " << std::endl;
+	for (std::vector<int>::iterator it = _s.begin(); it != _s.end(); it++) {
+		std::cout << *it << " ";
 	}
 }

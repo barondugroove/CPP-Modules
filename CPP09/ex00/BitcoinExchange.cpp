@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:07:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/07 18:52:01 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/08 18:50:42 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,9 @@ void searchDb(const std::map<std::string, float> &db, const std::string &input) 
 	if (!checkFile(input.c_str()))
 		exit (1);
 	std::ifstream file(input.c_str());
-	
+	std::getline(file, tmp);
 	while (std::getline(file, tmp))
 	{
-		if (isdigit(*tmp.begin()))
-		{
 			int coma = tmp.find("|", 0);
 			std::string date = tmp.substr(0, coma - 1);
 			std::string valueS = tmp.substr(coma + 1, tmp.size() - coma);
@@ -124,6 +122,5 @@ void searchDb(const std::map<std::string, float> &db, const std::string &input) 
 			}
 			else if (!isValidDate(date))
 				std::cout << "Error: bad input => " << date << std::endl;
-		}
 	}
 }
