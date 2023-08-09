@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/08 19:05:21 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/09 14:35:59 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <string>
 #include <iostream>
 
-void	checkErrors(std::string &str);
+bool	checkErrors(std::string &str);
 int		isOperator(char &c);
 void	calc(std::stack<char> &calculus, int i);
 void 	rpn(std::string &str);

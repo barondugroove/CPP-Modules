@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/08 19:13:17 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/09 14:38:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int main(int ac, char **av)
 		return 1;
 	}
 	std::string str = av[1];
-	checkErrors(str);
+	if (!checkErrors(str))
+		return 1;
 	rpn(str);
 	return 0;
 }

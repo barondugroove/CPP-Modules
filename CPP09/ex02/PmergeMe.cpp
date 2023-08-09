@@ -6,18 +6,20 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/08 18:41:40 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/09 18:14:43 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <string>
 #include <iostream>
-#include <cstdlib>
 
 PmergeMe::PmergeMe(char **av) {
-	while (*++av)
+	while (*av) {
 		_s.push_back(atoi(*av));
+		av++;
+	}
+
 	_size = _s.size();
 	_straggler = -1;
 	if (_size % 2 != 0)
@@ -60,76 +62,61 @@ void	PmergeMe::sortPairs(std::vector<int> &_s) {
 			vectorPair.push_back(std::make_pair(_s[i], _s[i + 1]));
 		}
 	}
-
 	sortPairs(vectorMax);
 
-	int idx = 0;
-    for (int i = 0; i < size - 1; i++) {
-        _s[i] = vectorMax[idx];
-		idx++;
+	_s.clear();
+    for (size_t i = 0; i < vectorMax.size(); i++) {
+		_s.push_back(vectorMax[i]);
+	}
+	
+	for (size_t i = 0; i < vectorPair.size(); i++) {
+		binarySearch(_s, vectorPair[i].first);
     }
 
 	static int i = 0;
 	std::cout << "Passage n* " << i++ << std::endl;
-	std::cout << "VectorMax is : " << std::endl;
+	std::cout << "VectorMax after recursion is : " << std::endl;
 	for (std::vector<int>::iterator it = vectorMax.begin(); it != vectorMax.end(); it++) {
-		std::cout << *it << " - ";
+		std::cout << *it; 
+		if (*(it + 1))
+			std::cout << " - ";
 	}
-/*	std::cout << std::endl <<  "VectorPair is : " << std::endl;
+	
+	std::cout << std::endl <<  "VectorPair after recursion is : " << std::endl;
 	for (std::vector<std::pair<int, int> >::iterator it = vectorPair.begin(); it != vectorPair.end(); it++) {
 		std::cout << it->first << " - " << it->second << " | ";
-	}*/
+	}
 	std::cout << std::endl;
 
 }
 
-/*
-void PmergeMe::mergePairs(std::vector<std::pair<int, int> > &resultVector, std::vector<std::pair<int, int> > &vector1, std::vector<std::pair<int, int> > &vector2) {
-	int i = 0;
-	int j = 0;
-	int size1 = vector1.size();
-	int size2 = vector2.size();
+void	PmergeMe::binarySearch(std::vector<int> &_s, int nbr) {
 
-	resultVector.clear(); // Clear the result vector before merging
-	std::cout << "Vector1 " << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it = vector1.begin(); it != vector1.end(); it++) {
-		std::cout << it->first << " - " << it->second  << " / ";
-	}
-	std::cout << std::endl;
-	std::cout << "Vector2 " << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it = vector2.begin(); it != vector2.end(); it++) {
-		std::cout << it->first << " - " << it->second  << " / ";
-	}
-	std::cout << std::endl;
+	int	idxMin = 0;
+	int idxMax = _s.size();
+	int middle = (idxMax - idxMin) / 2;;
 
-	while (i < size1 && j < size2) {
-			if (vector1[i].second <= vector2[j].second) {
-				resultVector.push_back(vector1[i]);
-				i++;
-			}
-			else {
-				resultVector.push_back(vector2[j]);
-				j++;
-			}
+	while ((idxMax - idxMin) > 1) {
+		if (nbr > _s[middle]) {
+			idxMin = middle;
+			middle += (idxMax - idxMin) / 2;
+		}
+		else {
+			idxMax = middle;
+			middle -= (idxMax - idxMin) / 2;
+		}
 	}
-
-	// Append any remaining elements from vector1 and vector2 to resultVector
-	while (i < size1) {
-		resultVector.push_back(vector1[i]);
-		i++;
-	}
-
-	while (j < size2) {
-		resultVector.push_back(vector2[j]);
-		j++;
-	}
-	std::cout << "Result after " << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it = resultVector.begin(); it != resultVector.end(); it++) {
-		std::cout << it->first << " - " << it->second  << " / ";
-	}
-	std::cout << std::endl << std::endl;
+	std::vector<int>::iterator it;
+	if (nbr > _s[idxMin])
+		it = _s.begin() + idxMax;
+	else
+		it = _s.begin() + idxMin;
+	_s.insert(it, nbr);
 }
-*/
+
+int	PmergeMe::getJacobsthal(int n, int n1) {
+	return (n + 2 * n1);
+}
 
 void	PmergeMe::FordJohnsonSort() {
 	std::vector<std::pair<int, int> > pairVector;
@@ -138,10 +125,14 @@ void	PmergeMe::FordJohnsonSort() {
 	for (std::vector<int>::iterator it = _s.begin(); it != _s.end(); it++) {
 		std::cout << *it << " ";
 	}
+	std::cout << std::endl << "size is :" << _size << std::endl;
 	std::cout << std::endl;
 	std::cout << "_straggler is : " << _straggler << std::endl;
 	std::cout << std::endl << std::endl;
 	sortPairs(_s);
+	if (_straggler != -1)
+		binarySearch(_s, _straggler);
+	std::cout  << "size is :" << _s.size() << std::endl;
 	std::cout << std::endl << "Vector after " << std::endl;
 	for (std::vector<int>::iterator it = _s.begin(); it != _s.end(); it++) {
 		std::cout << *it << " ";

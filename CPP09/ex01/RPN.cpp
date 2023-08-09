@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/08 19:45:19 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/09 14:36:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,22 @@
 #include <iostream>
 #include <cstdlib>
 
-void checkErrors(std::string &str) {
+bool checkErrors(std::string &str) {
 	if (str.empty() || str.find('(', 0) != std::string::npos || str.find(')', 0) != std::string::npos
 	|| str.find('.', 0) != std::string::npos) {
 		std::cerr << "Error." << std::endl;
-		exit (1);
+		return false;
 	}
+	
+	for (int i = 0; i < (int)str.size() - 1; i++) {
+		if (isdigit(str[i]) && isdigit(str[i + 1]))
+			return false;
+	}
+	return true;
 }
 
 int	isOperator(char &c) {
-	char operators[4] = {'+', '-', '*', '/'};
+	static const char operators[4] = {'+', '-', '*', '/'};
 	for (int i = 0; i < 4; i++)
 		if (c == operators[i])
 			return i;
@@ -54,13 +60,13 @@ void	clearStack(std::stack<int> &calculus) {
 	}
 }
 
-void	calc(std::stack<int> &calculus, int i) {
-	int (*operatorsFunc[4])(int &x, int &y) = {add, soustract, multiply, divide};
+bool	calc(std::stack<int> &calculus, int i) {
+	static int (*operatorsFunc[4])(int &x, int &y) = {add, soustract, multiply, divide};
 	
-	if (calculus.size() < 2) {
+	if (calculus.size() < 2 || i == -1) {
 		std::cout << "Error. Notation is erroneous." << std::endl;
-		clearStack(calculus);
-		exit (1);
+		//clearStack(calculus);
+		return false;
 	}
 	int x = calculus.top();
 	calculus.pop();
@@ -69,18 +75,21 @@ void	calc(std::stack<int> &calculus, int i) {
 	if (i == 3 && x == 0) {
 		std::cout << "Error. Division by 0 is impossible." << std::endl;
 		clearStack(calculus);
-		exit (1);
+		return false;
 	}
 	calculus.push(operatorsFunc[i](y, x));
+	return true;
 }
 
 void	rpn(std::string &str) {
 	std::stack<int> calculus;
+
 	for (std::string::iterator it = str.begin(); it != str.end(); it++) {
 		if (isdigit(*it))
 			calculus.push(*it - '0');
-		else if (isOperator(*it) != -1)
-			calc(calculus, isOperator(*it));
+		else if (*it != ' ' && !calc(calculus, isOperator(*it))) {
+				return;
+		}
 	}
 	std::cout << calculus.top() << std::endl;
 }
