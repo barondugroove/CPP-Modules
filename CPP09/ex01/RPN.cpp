@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/09 14:36:34 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/10 17:28:01 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,11 @@ int divide(int &x, int &y) {
 	return (x / y);
 }
 
-void	clearStack(std::stack<int> &calculus) {
-	for (int i = 0; i < (int)calculus.size(); i++) {
-		calculus.pop();
-	}
-}
-
 bool	calc(std::stack<int> &calculus, int i) {
 	static int (*operatorsFunc[4])(int &x, int &y) = {add, soustract, multiply, divide};
 	
 	if (calculus.size() < 2 || i == -1) {
-		std::cout << "Error. Notation is erroneous." << std::endl;
-		//clearStack(calculus);
+		std::cerr << "Error. Notation is erroneous." << std::endl;
 		return false;
 	}
 	int x = calculus.top();
@@ -73,8 +66,7 @@ bool	calc(std::stack<int> &calculus, int i) {
 	int y = calculus.top();
 	calculus.pop();
 	if (i == 3 && x == 0) {
-		std::cout << "Error. Division by 0 is impossible." << std::endl;
-		clearStack(calculus);
+		std::cerr << "Error. Division by 0 is impossible." << std::endl;
 		return false;
 	}
 	calculus.push(operatorsFunc[i](y, x));

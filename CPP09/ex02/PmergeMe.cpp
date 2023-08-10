@@ -6,20 +6,22 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/09 18:14:43 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/10 16:01:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 PmergeMe::PmergeMe(char **av) {
 	while (*av) {
 		_s.push_back(atoi(*av));
 		av++;
 	}
-
+	_n = 0;
+	_n1 = 2;
 	_size = _s.size();
 	_straggler = -1;
 	if (_size % 2 != 0)
@@ -27,21 +29,6 @@ PmergeMe::PmergeMe(char **av) {
 }
 
 PmergeMe::~PmergeMe() {
-}
-
-void	PmergeMe::createPairs(std::vector<std::pair<int, int> > &pairVector, std::vector<int> &s) {
-	int x;
-	int y;
-
-	if (_size % 2 != 0)
-		_straggler = s.back();
-	for (std::vector<int>::iterator it = s.begin(); it != s.end() && (it + 1) != s.end(); it += 2) {
-		x = *it;
-		y = *(it + 1);
-		if (x > y)
-			std::swap(x, y);
-		pairVector.push_back(std::make_pair(x, y));
-	}
 }
 
 void	PmergeMe::sortPairs(std::vector<int> &_s) {
@@ -62,6 +49,10 @@ void	PmergeMe::sortPairs(std::vector<int> &_s) {
 			vectorPair.push_back(std::make_pair(_s[i], _s[i + 1]));
 		}
 	}
+	if (size % 2 != 0) {
+		vectorMax.push_back(_s.back());
+	}
+
 	sortPairs(vectorMax);
 
 	_s.clear();
@@ -72,22 +63,6 @@ void	PmergeMe::sortPairs(std::vector<int> &_s) {
 	for (size_t i = 0; i < vectorPair.size(); i++) {
 		binarySearch(_s, vectorPair[i].first);
     }
-
-	static int i = 0;
-	std::cout << "Passage n* " << i++ << std::endl;
-	std::cout << "VectorMax after recursion is : " << std::endl;
-	for (std::vector<int>::iterator it = vectorMax.begin(); it != vectorMax.end(); it++) {
-		std::cout << *it; 
-		if (*(it + 1))
-			std::cout << " - ";
-	}
-	
-	std::cout << std::endl <<  "VectorPair after recursion is : " << std::endl;
-	for (std::vector<std::pair<int, int> >::iterator it = vectorPair.begin(); it != vectorPair.end(); it++) {
-		std::cout << it->first << " - " << it->second << " | ";
-	}
-	std::cout << std::endl;
-
 }
 
 void	PmergeMe::binarySearch(std::vector<int> &_s, int nbr) {
@@ -118,23 +93,29 @@ int	PmergeMe::getJacobsthal(int n, int n1) {
 	return (n + 2 * n1);
 }
 
-void	PmergeMe::FordJohnsonSort() {
-	std::vector<std::pair<int, int> > pairVector;
+bool	is_sorted(std::vector<int> &_s) {
+	for (std::vector<int>::iterator it = _s.begin(); it != _s.end() - 1; it++) {
+		if (*it > *(it + 1))
+			return false;
+	}
+	return true;
+}
 
+void	PmergeMe::FordJohnsonSort() {
 	std::cout << "Vector before " << std::endl;
 	for (std::vector<int>::iterator it = _s.begin(); it != _s.end(); it++) {
 		std::cout << *it << " ";
 	}
-	std::cout << std::endl << "size is :" << _size << std::endl;
 	std::cout << std::endl;
-	std::cout << "_straggler is : " << _straggler << std::endl;
-	std::cout << std::endl << std::endl;
 	sortPairs(_s);
 	if (_straggler != -1)
 		binarySearch(_s, _straggler);
-	std::cout  << "size is :" << _s.size() << std::endl;
+
 	std::cout << std::endl << "Vector after " << std::endl;
 	for (std::vector<int>::iterator it = _s.begin(); it != _s.end(); it++) {
 		std::cout << *it << " ";
 	}
+
+	if (is_sorted(_s))
+		std::cout << std::endl << std::endl << "CEST TRIE PUTAIN" << std::endl;
 }
