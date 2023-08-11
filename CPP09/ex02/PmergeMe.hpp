@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/10 15:21:51 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/11 15:23:06 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <cstdlib>
 #include <vector>
+#include <deque>
 #include <string>
 #include <iostream>
 
@@ -24,12 +25,13 @@ class PmergeMe {
 		~PmergeMe();
 		
 		void	FordJohnsonSort();
-		void	sortPairs(std::vector<int> &_s);
+		void	sortVec(std::vector<int> &_s);
 		void	binarySearch(std::vector<int> &_s, int nbr);
 		int		getJacobsthal(int n, int n1);
 
 	private :
-		std::vector<int>	_s;
+		std::vector<int>	_vec;
+		std::deque<int>		_deq;
 		int					_size;
 		int					_straggler;
 		int					_n;
