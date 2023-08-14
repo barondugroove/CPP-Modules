@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:07:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/07 18:20:46 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/14 19:07:44 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 #include <map>
 
 bool	checkFile(const char *fileName);
-bool isValidDate(std::string &dateStr);
-bool isValidValue(std::string &value);
-void createDb(std::map<std::string, float> &db, const std::string &input);
-void searchDb(const std::map<std::string, float> &db, const std::string &input);
+bool	isValidDate(std::string &dateStr);
+bool	isValidValue(std::string &value);
+void	createDb(std::map<std::string, float> &db, const std::string &input);
+void	searchDb(const std::map<std::string, float> &db, const std::string &input);
 
 #endif

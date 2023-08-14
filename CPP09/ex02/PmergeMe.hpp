@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/11 15:23:06 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/14 17:35:13 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@ class PmergeMe {
 	public :
 		PmergeMe(char **av);
 		~PmergeMe();
-		
-		void	FordJohnsonSort();
+
+		void	FordJohnsonSortVec(char **av);
 		void	sortVec(std::vector<int> &_s);
-		void	binarySearch(std::vector<int> &_s, int nbr);
+		void	binarySearchVec(std::vector<int> &_s, int nbr);
+
+		void	FordJohnsonSortDeq(char **av);
+		void	sortDeq(std::deque<int> &_s);
+		void	binarySearchDeq(std::deque<int> &_s, int nbr);
+
 		int		getJacobsthal(int n, int n1);
+		void	displayTimer(char **av);
+
+		bool	is_sorted(std::vector<int> &_vec);
+		bool	is_sortedDeq(std::deque<int> &_deq);
 
 	private :
 		std::vector<int>	_vec;
@@ -36,6 +45,8 @@ class PmergeMe {
 		int					_straggler;
 		int					_n;
 		int					_n1;
+		double				_vecTimer;
+		double				_deqTimer;
 };
 
 #endif

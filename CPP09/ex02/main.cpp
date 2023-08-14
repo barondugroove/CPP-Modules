@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/11 15:08:24 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/14 15:58:36 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int main(int ac, char **av)
 		return 1;
 	}
 	PmergeMe s = PmergeMe(av);
-	s.FordJohnsonSort();
 	return 0;
 }
