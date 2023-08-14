@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:07:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/14 19:24:53 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/14 19:55:31 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 #include <sstream>
 
 bool	checkFile(const char *fileName) {
+	std::string tmp;
 	std::ifstream file(fileName);
 
 	if (!file.good()) {
 		std::cout << "Error could not open file " << fileName << "." << std::endl;
 		return false;
 	}
+	std::getline(file, tmp);
 	if (file.peek() == EOF) {
 		std::cout << "Error, file " << fileName << " is empty." << std::endl;
 		return false;
@@ -51,15 +53,9 @@ bool isValidDate(std::string &dateStr) {
 	if (year < 1900 || year > 9999 || month < 1 || month > 12 || day < 1 || day > 31)
 		return false;
 
-	// Check February's day range considering leap years
+	// Check Days in months including February's day range considering leap years
 	bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-	if (month == 2 && (day > 29 || (day > 28 && !isLeapYear))) {
-		return false;
-	}
-	// std::cout << isLeapYear << "\n";
-	// std::cout << day << std::endl;
-	// Check day based on month and year
-	const int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	const int daysInMonth[] = {31, 28 + isLeapYear, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	if (day > daysInMonth[month - 1]) {
 		return false;
 	}
@@ -67,7 +63,12 @@ bool isValidDate(std::string &dateStr) {
 }
 
 bool isValidValue(std::string &value) {
-	double	test = strtod(value.c_str(), NULL);
+	char	*ptr;
+	double	test = strtod(value.c_str(), &ptr);
+	if (*ptr != '\0') {
+		std::cout << "Error: not a number." << std::endl;
+		return false;
+	}
 	if (test < 0) {
 		std::cout << "Error: not a positive number." << std::endl;
 		return false;
@@ -114,7 +115,7 @@ void	searchDb(const std::map<std::string, float> &db, const std::string &input) 
 			if (it != db.begin()) {
 				it--;
 			}
-			std::cout << it->first << " => " << value << " = " << value * it->second << std::endl;
+			std::cout << date << " => " << value << " = " << value * it->second << std::endl;
 		}
 		else if (!isValidDate(date))
 			std::cout << "Error: bad input => " << date << std::endl;
