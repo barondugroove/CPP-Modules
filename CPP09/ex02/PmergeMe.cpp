@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/16 12:50:29 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/16 17:54:02 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@
 
 double	getTime(double timer) {
 	std::clock_t c_start = std::clock();
-	return c_start - timer;
+	return (c_start - timer);
 }
 
 void	PmergeMe::displayTimer(char **av) {
-	std::cout << "Before: ";
+	std::cout << "Before:	";
 	for (int i = 0; av[i] ; i++) {
 		std::cout << av[i];
 		if (av[i + 1])
 			std::cout << " ";
 	}
-	std::cout << std::endl << "After: ";
+	std::cout << std::endl << "After:	";
 	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); it++) {
 		std::cout << *it;
-		if (*(it + 1))
+		if ((it + 1) != _vec.end())
 			std::cout << " ";
 	}
 	std::cout << std::endl;
@@ -53,41 +53,12 @@ PmergeMe::PmergeMe(char **av) {
 	_deqTimer = getTime(_deqTimer);
 
 	displayTimer(av);
-	if (is_sorted(_vec))
-		std::cout << std::endl << std::endl << "CEST TRIE PUTAIN" << std::endl;
-	if (is_sortedDeq(_deq))
-		std::cout << "CEST TRIE LE DEQ" << std::endl;
 }
 
 PmergeMe::~PmergeMe() {
 }
 
-int	PmergeMe::getJacobsthal(int n, int n1) {
-	return ((n * 2) + n1);
-}
-
-bool	PmergeMe::is_sorted(std::vector<int> &_vec) {
-	if ((int)_vec.size() != _size)
-		return false;
-	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end() - 1; it++) {
-		if (*it > *(it + 1))
-			return false;
-	}
-	return true;
-}
-
-bool	PmergeMe::is_sortedDeq(std::deque<int> &_deq) {
-	if ((int)_deq.size() != _size)
-		return false;
-	for (std::deque<int>::iterator it = _deq.begin(); it != _deq.end() - 1; it++) {
-		if (*it > *(it + 1))
-			return false;
-	}
-	return true;
-}
-
 void	PmergeMe::FordJohnsonSortVec(char **av) {
-	_vecTimer = getTime(0);
 	while (*av) {
 		_vec.push_back(atoi(*av));
 		av++;
@@ -99,6 +70,22 @@ void	PmergeMe::FordJohnsonSortVec(char **av) {
 	sortVec(_vec);
 	if (_straggler != -1)
 		binarySearchVec(_vec, _straggler);
+}
+
+void	reorderVecPairs(std::vector<int> &vectorMax, std::vector<std::pair<int, int> > &vectorPair) {
+	std::vector<std::pair<int, int> > vectorCopy = vectorPair;
+
+	for (size_t i = 0; i < vectorMax.size(); i++) {
+		int j = 0;
+		if (vectorMax[i] != vectorPair[i].second) {
+			while (vectorMax[i] != vectorPair[j].second)
+				j++;
+			vectorCopy[i].first = vectorPair[j].first;
+			vectorCopy[i].second = vectorPair[j].second;
+
+		}
+	}
+	vectorPair = vectorCopy;
 }
 
 void	PmergeMe::sortVec(std::vector<int> &_vec) {
@@ -129,28 +116,16 @@ void	PmergeMe::sortVec(std::vector<int> &_vec) {
 		_vec.push_back(vectorMax[i]);
 	}
 
+	if ((int)vectorPair.size() == _size / 2) {
+		reorderVecPairs(vectorMax, vectorPair);
+		_vec.insert(_vec.begin(), vectorPair[0].first);
+		vectorPair.erase(vectorPair.begin());
+	}
+
 	for (size_t i = 0; i < vectorPair.size(); i++) {
 		binarySearchVec(_vec, vectorPair[i].first);
 	}
 
-
-/*	std::cout << size << " | " << _size << std::endl;
-	std::cout << "n is : " << _n << " | n1 is : " << _n1 << std::endl;
-	for (int i = _n1 - 1; i >= _n; i--) {
-			std::cout << "i is : " << i << std::endl;
-			std::cout << "vectorPair[i] is " << vectorPair[i].first << "-" << vectorPair[i].second << std::endl;
-			if (vectorPair[i].first) {
-				binarySearchVec(_vec, vectorPair[i].first);
-				vectorPair.erase(vectorPair.begin() + i);
-			}
-	}
-	int	temp;
-	temp = _n1;
-	_n1 = getJacobsthal(_n, _n1);
-	if (_n1 > size)
-		_n1 = size;
-	_n = temp;
-*/
 }
 
 void	PmergeMe::binarySearchVec(std::vector<int> &_vec, int nbr) {
@@ -178,16 +153,30 @@ void	PmergeMe::binarySearchVec(std::vector<int> &_vec, int nbr) {
 }
 
 void	PmergeMe::FordJohnsonSortDeq(char **av) {
-	_deqTimer = getTime(0);
 	while (*av) {
 		_deq.push_back(atoi(*av));
 		av++;
 	}
-	_size = _deq.size();
 
 	sortDeq(_deq);
 	if (_straggler != -1)
 		binarySearchDeq(_deq, _straggler);
+}
+
+void	reorderDeqPairs(std::deque<int> &deqMax, std::deque<std::pair<int, int> > &deqPair) {
+	std::deque<std::pair<int, int> > deqCopy = deqPair;
+
+	for (size_t i = 0; i < deqMax.size(); i++) {
+		int j = 0;
+		if (deqMax[i] != deqPair[i].second) {
+			while (deqMax[i] != deqPair[j].second)
+				j++;
+			deqCopy[i].first = deqPair[j].first;
+			deqCopy[i].second = deqPair[j].second;
+
+		}
+	}
+	deqPair = deqCopy;
 }
 
 void	PmergeMe::sortDeq(std::deque<int> &_deq) {
@@ -217,6 +206,11 @@ void	PmergeMe::sortDeq(std::deque<int> &_deq) {
 	for (size_t i = 0; i < dequeMax.size(); i++) {
 		_deq.push_back(dequeMax[i]);
 	}
+	if ((int)dequePair.size() == _size / 2) {
+		reorderDeqPairs(dequeMax, dequePair);
+		_deq.insert(_deq.begin(), dequePair[0].first);
+		dequePair.erase(dequePair.begin());
+	}
 
 	for (size_t i = 0; i < dequePair.size(); i++) {
 		binarySearchDeq(_deq, dequePair[i].first);
@@ -227,7 +221,7 @@ void	PmergeMe::binarySearchDeq(std::deque<int> &_deq, int nbr) {
 
 	int	idxMin = 0;
 	int idxMax = _deq.size();
-	int middle = (idxMax - idxMin) / 2;;
+	int middle = (idxMax - idxMin) / 2;
 
 	while ((idxMax - idxMin) > 1) {
 		if (nbr > _deq[middle]) {
@@ -245,4 +239,16 @@ void	PmergeMe::binarySearchDeq(std::deque<int> &_deq, int nbr) {
 	else
 		it = _deq.begin() + idxMin;
 	_deq.insert(it, nbr);
+}
+
+PmergeMe::PmergeMe() {
+}
+
+PmergeMe::PmergeMe(const PmergeMe &src) {
+	*this = src;
+}
+
+PmergeMe &PmergeMe::operator=(const PmergeMe &rhs) {
+	(void)rhs;
+	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/16 12:43:46 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/16 17:33:02 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int main(int ac, char **av)
 		std::cout << "Error. Check arguments." << std::endl;
 		return 1;
 	}
-	PmergeMe s = PmergeMe(av);
+	PmergeMe s(av);
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/14 17:35:13 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/16 17:55:11 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ class PmergeMe {
 		void	sortDeq(std::deque<int> &_s);
 		void	binarySearchDeq(std::deque<int> &_s, int nbr);
 
-		int		getJacobsthal(int n, int n1);
 		void	displayTimer(char **av);
 
-		bool	is_sorted(std::vector<int> &_vec);
-		bool	is_sortedDeq(std::deque<int> &_deq);
-
 	private :
+		PmergeMe();
+		PmergeMe(const PmergeMe &src);
+		PmergeMe &operator=(const PmergeMe &rhs);
+
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
 		int					_size;
