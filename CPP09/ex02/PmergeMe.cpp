@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/14 18:57:16 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/16 12:50:29 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,13 +134,15 @@ void	PmergeMe::sortVec(std::vector<int> &_vec) {
 	}
 
 
-	std::cout << size << " | " << _size << std::endl;
-/*	std::cout << "n is : " << _n << " | n1 is : " << _n1 << std::endl;
+/*	std::cout << size << " | " << _size << std::endl;
+	std::cout << "n is : " << _n << " | n1 is : " << _n1 << std::endl;
 	for (int i = _n1 - 1; i >= _n; i--) {
 			std::cout << "i is : " << i << std::endl;
-			binarySearchVec(_vec, vectorPair[i].first);
 			std::cout << "vectorPair[i] is " << vectorPair[i].first << "-" << vectorPair[i].second << std::endl;
-			std::cout << "_vec[i] is " << _vec[i] << std::endl;
+			if (vectorPair[i].first) {
+				binarySearchVec(_vec, vectorPair[i].first);
+				vectorPair.erase(vectorPair.begin() + i);
+			}
 	}
 	int	temp;
 	temp = _n1;
