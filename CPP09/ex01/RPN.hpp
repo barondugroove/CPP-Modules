@@ -6,12 +6,14 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/10 16:02:51 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/16 11:49:01 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 # define RPN_HPP
+
+#define INT_OVERFLOW 2147483648
 
 #include <stack>
 #include <string>

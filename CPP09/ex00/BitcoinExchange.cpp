@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:07:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/14 19:55:31 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/16 11:32:13 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ bool	checkFile(const char *fileName) {
 		std::cout << "Error could not open file " << fileName << "." << std::endl;
 		return false;
 	}
-	std::getline(file, tmp);
 	if (file.peek() == EOF) {
 		std::cout << "Error, file " << fileName << " is empty." << std::endl;
 		return false;
@@ -54,7 +53,7 @@ bool isValidDate(std::string &dateStr) {
 		return false;
 
 	// Check Days in months including February's day range considering leap years
-	bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0 && year % 100 == 0);
 	const int daysInMonth[] = {31, 28 + isLeapYear, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	if (day > daysInMonth[month - 1]) {
 		return false;
@@ -62,19 +61,22 @@ bool isValidDate(std::string &dateStr) {
 	return true;
 }
 
-bool isValidValue(std::string &value) {
+bool isValidValue(std::string &valueStr, double value) {
 	char	*ptr;
-	double	test = strtod(value.c_str(), &ptr);
+	double	test = strtod(valueStr.c_str(), &ptr);
 	if (*ptr != '\0') {
-		std::cout << "Error: not a number." << std::endl;
+		if (value == 1000)
+			std::cout << "Error: not a number." << std::endl;
 		return false;
 	}
 	if (test < 0) {
-		std::cout << "Error: not a positive number." << std::endl;
+		if (value == 1000)
+			std::cout << "Error: not a positive number." << std::endl;
 		return false;
 	}
-	if (test > 1000) {
-		std::cout << "Error: too large a number." << std::endl;
+	if (test > value) {
+		if (value == 1000)
+			std::cout << "Error: too large a number." << std::endl;
 		return false;
 	}
 	return true;
@@ -91,7 +93,7 @@ void createDb(std::map<std::string, float> &db, const std::string &input) {
 		std::string date = tmp.substr(0, coma);
 		std::string valueS = tmp.substr(coma + 1, tmp.size() - coma);
 		float value = strtof(valueS.c_str(), NULL);
-		if (isValidDate(date) && ((value >= 0 && value < (float)INT_MAX)) && coma != -1)
+		if (isValidDate(date) && isValidValue(valueS, INT_MAX) && coma != -1)
 			db.insert(std::pair<std::string, float>(date, value));
 	}
 }
@@ -110,7 +112,7 @@ void	searchDb(const std::map<std::string, float> &db, const std::string &input) 
 
 		// Use upper_bound to check if the date exists in the database
 		std::map<std::string, float>::const_iterator it = db.upper_bound(date);
-		if (isValidDate(date) && isValidValue(valueS) && coma != -1)
+		if (isValidDate(date) && isValidValue(valueS, 1000) && coma != -1)
 		{
 			if (it != db.begin()) {
 				it--;

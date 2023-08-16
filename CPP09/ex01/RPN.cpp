@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/11 15:07:38 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/16 12:15:30 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <climits>
 
 bool checkErrors(std::string &str) {
 	if (str.empty() || str.find('(', 0) != std::string::npos || str.find(')', 0) != std::string::npos
@@ -22,7 +23,7 @@ bool checkErrors(std::string &str) {
 		std::cerr << "Error." << std::endl;
 		return false;
 	}
-	
+
 	for (int i = 0; i < (int)str.size() - 1; i++) {
 		if (isdigit(str[i]) && isdigit(str[i + 1]))
 			return false;
@@ -38,38 +39,52 @@ int	isOperator(char &c) {
 	return -1;
 }
 
-int add(int &x, int &y) {
-	return (x + y);
+double add(double &first, double &second) {
+	double test = first + second;
+	if (test > INT_MAX)
+		return (INT_OVERFLOW);
+	return (second + first);
 }
 
-int soustract(int &x, int &y) {
-	return (x - y);
+double soustract(double &first, double &second) {
+	double test = first - second;
+	if (test < INT_MIN)
+		return (INT_OVERFLOW);
+	return (first - second);
 }
 
-int multiply(int &x, int &y) {
-	return (x * y);
+double multiply(double &first, double &second) {
+	double test = first * second;
+	if (test > INT_MAX || test < INT_MIN)
+		return (INT_OVERFLOW);
+	return (second * first);
 }
 
-int divide(int &x, int &y) {
-	return (x / y);
+double divide(double &first, double &second) {
+	return (first / second);
 }
 
 bool	calc(std::stack<int> &calculus, int i) {
-	static int (*operatorsFunc[4])(int &x, int &y) = {add, soustract, multiply, divide};
-	
+	static double (*operatorsFunc[4])(double &x, double &y) = {add, soustract, multiply, divide};
+
 	if (calculus.size() < 2 || i == -1) {
 		std::cerr << "Error. Notation is erroneous." << std::endl;
 		return false;
 	}
-	int x = calculus.top();
+	double second = calculus.top();
 	calculus.pop();
-	int y = calculus.top();
+	double first = calculus.top();
 	calculus.pop();
-	if (i == 3 && x == 0) {
+	if (i == 3 && first == 0) {
 		std::cerr << "Error. Division by 0 is impossible." << std::endl;
 		return false;
 	}
-	calculus.push(operatorsFunc[i](y, x));
+	if (operatorsFunc[i](first, second) != INT_OVERFLOW)
+		calculus.push(static_cast<int>(operatorsFunc[i](first, second)));
+	else {
+		std::cout << "Error. Result overflow" << std::endl;
+		return false;
+	}
 	return true;
 }
 
@@ -83,5 +98,8 @@ void	rpn(std::string &str) {
 				return;
 		}
 	}
-	std::cout << calculus.top() << std::endl;
+	if (calculus.size() == 1)
+		std::cout << calculus.top() << std::endl;
+	else
+		std::cout << "Error. Notation is erroneous." << std::endl;
 }
