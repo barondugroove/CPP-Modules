@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/16 17:55:11 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/17 18:30:52 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <string>
 #include <iostream>
 
-class PmergeMe {
+class PmergeMe {float
 	public :
 		PmergeMe(char **av);
 		~PmergeMe();

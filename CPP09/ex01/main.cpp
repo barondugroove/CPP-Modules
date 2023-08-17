@@ -6,11 +6,24 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:52:16 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/16 12:15:03 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/17 17:29:29 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+bool checkErrors(std::string &str) {
+	if (str.empty() || str.find('(', 0) != std::string::npos || str.find(')', 0) != std::string::npos
+	|| str.find('.', 0) != std::string::npos) {
+		return false;
+	}
+
+	for (int i = 0; i < (int)str.size() - 1; i++) {
+		if (isdigit(str[i]) && isdigit(str[i + 1]))
+			return false;
+	}
+	return true;
+}
 
 int main(int ac, char **av)
 {
@@ -23,6 +36,6 @@ int main(int ac, char **av)
 		std::cerr << "Error." << std::endl;
 		return 1;
 	}
-	rpn(str);
+	RPN::rpn(str);
 	return 0;
 }

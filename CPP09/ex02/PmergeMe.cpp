@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:29:02 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/16 17:54:02 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/17 18:30:50 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <algorithm>
 #include <ctime>
 
-double	getTime(double timer) {
+static double	getTime(double timer) {
 	std::clock_t c_start = std::clock();
 	return (c_start - timer);
 }
@@ -58,12 +58,26 @@ PmergeMe::PmergeMe(char **av) {
 PmergeMe::~PmergeMe() {
 }
 
+PmergeMe::PmergeMe() {
+}
+
+PmergeMe::PmergeMe(const PmergeMe &src) {
+	*this = src;
+}
+
+PmergeMe &PmergeMe::operator=(const PmergeMe &rhs) {
+	(void)rhs;
+	return *this;
+}
+
 void	PmergeMe::FordJohnsonSortVec(char **av) {
 	while (*av) {
 		_vec.push_back(atoi(*av));
 		av++;
 	}
 	_size = _vec.size();
+	if (_size == 1)
+		return ;
 	if (_size % 2 != 0)
 		_straggler = _vec.back();
 
@@ -72,7 +86,7 @@ void	PmergeMe::FordJohnsonSortVec(char **av) {
 		binarySearchVec(_vec, _straggler);
 }
 
-void	reorderVecPairs(std::vector<int> &vectorMax, std::vector<std::pair<int, int> > &vectorPair) {
+static void	reorderVecPairs(std::vector<int> &vectorMax, std::vector<std::pair<int, int> > &vectorPair) {
 	std::vector<std::pair<int, int> > vectorCopy = vectorPair;
 
 	for (size_t i = 0; i < vectorMax.size(); i++) {
@@ -157,13 +171,14 @@ void	PmergeMe::FordJohnsonSortDeq(char **av) {
 		_deq.push_back(atoi(*av));
 		av++;
 	}
-
+	if (_size == 1)
+		return ;
 	sortDeq(_deq);
 	if (_straggler != -1)
 		binarySearchDeq(_deq, _straggler);
 }
 
-void	reorderDeqPairs(std::deque<int> &deqMax, std::deque<std::pair<int, int> > &deqPair) {
+static void	reorderDeqPairs(std::deque<int> &deqMax, std::deque<std::pair<int, int> > &deqPair) {
 	std::deque<std::pair<int, int> > deqCopy = deqPair;
 
 	for (size_t i = 0; i < deqMax.size(); i++) {
@@ -239,16 +254,4 @@ void	PmergeMe::binarySearchDeq(std::deque<int> &_deq, int nbr) {
 	else
 		it = _deq.begin() + idxMin;
 	_deq.insert(it, nbr);
-}
-
-PmergeMe::PmergeMe() {
-}
-
-PmergeMe::PmergeMe(const PmergeMe &src) {
-	*this = src;
-}
-
-PmergeMe &PmergeMe::operator=(const PmergeMe &rhs) {
-	(void)rhs;
-	return *this;
 }

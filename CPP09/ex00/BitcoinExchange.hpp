@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:07:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/16 11:23:50 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/17 18:27:34 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,19 @@
 
 #include <string>
 #include <iostream>
-#include <unistd.h>
 #include <map>
 
-bool	checkFile(const char *fileName);
-bool	isValidDate(std::string &dateStr);
-bool	isValidValue(std::string &valueStr, double value);
-void	createDb(std::map<std::string, float> &db, const std::string &input);
-void	searchDb(const std::map<std::string, float> &db, const std::string &input);
+class BitcoinExchange {
+	public :
+		static void	createDb(std::map<std::string, float> &db, const std::string &input);
+		static void	searchDb(const std::map<std::string, float> &db, const std::string &input);
+
+	private :
+		BitcoinExchange(void);
+		BitcoinExchange(BitcoinExchange const &src);
+		~BitcoinExchange(void);
+
+		BitcoinExchange &operator=(BitcoinExchange const &rhs);
+};
 
 #endif

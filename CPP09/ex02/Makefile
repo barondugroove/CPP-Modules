@@ -6,7 +6,7 @@
 #    By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:40:02 by bchabot           #+#    #+#              #
-#    Updated: 2023/08/16 17:53:43 by bchabot          ###   ########.fr        #
+#    Updated: 2023/08/17 18:11:39 by bchabot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ clean :
 	rm -f $(OBJS)
 
 run: $(NAME)
-	./$(NAME) `shuf -i 1-100000 -n 1000 | tr "\n" " "`
+	./$(NAME) `shuf -i 1-100000 -n 100 | tr "\n" " "`
 
 fclean : clean
 	rm -rf $(NAME)
