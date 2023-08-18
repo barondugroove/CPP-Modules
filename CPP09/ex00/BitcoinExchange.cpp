@@ -6,7 +6,7 @@
 /*   By: bchabot <bchabot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 19:07:27 by bchabot           #+#    #+#             */
-/*   Updated: 2023/08/17 18:26:42 by bchabot          ###   ########.fr       */
+/*   Updated: 2023/08/17 22:24:06 by bchabot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,6 @@ void BitcoinExchange::createDb(std::map<std::string, float> &db, const std::stri
 				db.insert(std::pair<std::string, float>(date, value));
 		}
 	}
-	std::cout << "MY DB IS : " << std::endl;
-	for (std::map<std::string, float>::iterator it = db.begin(); it != db.end(); it++) {
-		std::cout << it->first << "," << it->second << std::endl;
-	}
-	std::cout << std::endl;
 }
 
 static bool	checkInputs(int comma ,std::string &date, std::string &value) {
